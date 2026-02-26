@@ -1,16 +1,41 @@
-# Classification Specs
+# Atom Classification Data Structures
 
-This directory is intentionally flat.
+This directory defines the canonical identity contracts for atoms.
 
-Each folder is a first-class atom classification with its own schema examples. There are no umbrella grouping folders.
+Classification answers one question: "What is this thing, at its smallest durable identity?"
+
+## Why Classification Is Separate
+
+Onchain data should be stable, minimal, and cheap to maintain. Classification docs enforce that by focusing on identity fields only (name, canonical type, and minimal disambiguators).
+
+If mutable context (descriptions, images, social stats, market data, etc.) is mixed into base atom payloads, atoms become stale and expensive to keep correct.
+
+## Onchain vs Offchain
+
+| Layer | Purpose | Typical Data |
+| --- | --- | --- |
+| Onchain Classification (this folder) | Durable identity contract | canonical type, normalized minimal `Atom Data` |
+| Offchain Enrichment (`../enrichment`) | Refreshable context contract | provider payloads, media, metrics, dynamic metadata |
+
+## How Classification Is Used
+
+1. Input is parsed and normalized into a classification type.
+2. Minimal `Atom Data` is produced for that type.
+3. The atom can be created/linked onchain from that stable payload.
+4. Enrichment artifacts can then attach rich context without changing atom identity.
+
+## Contract Shape
+
+Each classification doc includes:
+
+- minimal `Atom Data` (identity-first)
+- `Atom Classification` envelope
+- one concrete example payload
 
 ## Folder Convention
 
 - `classifications/<type-slug>/index.md`
-- Each file includes:
-  - minimal `Atom Data`
-  - `Atom Classification` envelope
-  - example payload
+- One first-class type per folder (flat taxonomy, no umbrella folders)
 
 ## Available Types
 
