@@ -7,6 +7,52 @@ If you are new to this area, the key idea is:
 - store minimal identity onchain
 - attach rich metadata offchain
 
+## Atom Classification (Identity Layer)
+
+Atom classification is the canonical, minimal shape of an entity in Intuition. It is designed for durability and onchain use: enough data to identify the entity and disambiguate it, but not enough to become stale quickly.
+
+Classification output is type-first and identity-first:
+
+```json
+{
+  "type": "Person",
+  "data": {
+    "@context": "https://schema.org/",
+    "@type": "Person",
+    "name": "Brad Pitt",
+    "sameAs": ["https://www.wikidata.org/wiki/Q35332"]
+  }
+}
+```
+
+## Atom Enrichment (Context Layer)
+
+Atom enrichment is refreshable, offchain context attached to a classified atom. It captures provider-specific metadata that changes over time (descriptions, media, links, stats, market data, and other dynamic fields), without mutating the atom's core identity.
+
+Enrichment output always uses a shared artifact envelope:
+
+```json
+{
+  "artifact_type": "wikipedia",
+  "data": {
+    "summary": "American actor and film producer"
+  },
+  "meta": {
+    "pluginId": "wikipedia",
+    "provider": "wikipedia",
+    "fetchedAt": "2026-02-26T12:00:00Z",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q35332"
+  }
+}
+```
+
+## How They Work Together
+
+1. Classify the input into a minimal canonical atom shape.
+2. Persist/reference that stable identity onchain.
+3. Attach and refresh enrichment artifacts offchain as better context becomes available.
+4. Compose identity + context at read time for product UX and search.
+
 ## Why This Matters
 
 Atoms are the core identity primitives in the Intuition graph. If atoms contain too many mutable fields (images, long descriptions, changing URLs), they become stale and expensive to maintain.
