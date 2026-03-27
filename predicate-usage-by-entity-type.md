@@ -296,7 +296,7 @@ Some predicates can be either depositional (`I` as Subject) or attributive (spec
 | `mentor of` | `(I, mentor of, Alice)` — "I mentor Alice" | `(Bob, mentor of, Alice)` — "I agree Bob mentors Alice" |
 | `student of` | `(I, student of, Bob)` — "I am Bob's student" | `(Alice, student of, Bob)` — "I agree Alice studies under Bob" |
 | `partner of` | `(I, partner of, SWIFT)` — "We are partners" | `(Chainlink, partner of, SWIFT)` — "I agree they are partners" |
-| `curated by` | `(I, curated by, DeFi Stack)` — "I curate this" | `(DeFi Stack, curated by, Alice)` — "I agree Alice curates this" |
+| `curated by` | `(DeFi Stack, curated by, I)` — "I curate this" | `(DeFi Stack, curated by, Alice)` — "I agree Alice curates this" |
 
 **Design guidance for hybrid predicates:** Default to the `I` pattern when the relationship is personal. Only use the attributive pattern when making claims about third parties. If your frontend knows the user is the subject, route to the `(I, predicate, object)` market.
 
