@@ -94,7 +94,7 @@ Because predicates read as `(I, predicate, object)`, verb predicates must use **
 | `endorse` | ~~`endorses`~~ | "I endorse EIP-4844" not "I endorses EIP-4844" |
 | `agree with` | ~~`agrees with`~~ | "I agree with this" not "I agrees with this" |
 | `support` | ~~`supports`~~ | "I support MiCA" not "I supports MiCA" |
-| `contain` | ~~`contains`~~ | "I contain" / "(Stack, contain, Item)" |
+| `contain` | ~~`contains`~~ | "I contain" / "(Collection, contain, Item)" |
 | `use` | ~~`uses`~~ | "(Aave, use, Chainlink)" |
 | `implement` | ~~`implements`~~ | "(USDC, implement, ERC-20)" |
 
@@ -296,7 +296,7 @@ Some predicates can be either depositional (`I` as Subject) or attributive (spec
 | `mentor of` | `(I, mentor of, Alice)` — "I mentor Alice" | `(Bob, mentor of, Alice)` — "I agree Bob mentors Alice" |
 | `student of` | `(I, student of, Bob)` — "I am Bob's student" | `(Alice, student of, Bob)` — "I agree Alice studies under Bob" |
 | `partner of` | `(I, partner of, SWIFT)` — "We are partners" | `(Chainlink, partner of, SWIFT)` — "I agree they are partners" |
-| `curated by` | `(I, curated by, DeFi Stack)` — "I curate this" | `(DeFi Stack, curated by, Alice)` — "I agree Alice curates this" |
+| `curated by` | `(I, curated by, DeFi Blue Chips)` — "I curate this" | `(DeFi Blue Chips, curated by, Alice)` — "I agree Alice curates this" |
 
 **Design guidance for hybrid predicates:** Default to the `I` pattern when the relationship is personal. Only use the attributive pattern when making claims about third parties. If your frontend knows the user is the subject, route to the `(I, predicate, object)` market.
 
@@ -727,9 +727,9 @@ A physical or digital product, hardware device, or consumer good.
 
 ---
 
-## Collection (Stack)
+## Collection
 
-Stacks are Intuition's native collection primitive — a curated list of atoms.
+Collections are curated groups of atoms. They may represent watchlists, directories, ranked lists, thematic bundles, or any other list-like grouping.
 
 ### Identity and Metadata
 
@@ -747,8 +747,8 @@ Stacks are Intuition's native collection primitive — a curated list of atoms.
 |---|---|---|---|
 | `contain` | `Any` | `(Layer 1 Watchlist, contain, Ethereum)` | core |
 | `curated by` | `Person` / `Organization` | `(DeFi Blue Chips, curated by, Alice)` | core |
-| `pinned in` | — (Subject is the item) | *(Items are pinned in a Stack; the Stack is the Object)* | — |
-| `featured in` | — (Subject is the item) | *(Items are featured in a Stack; the Stack is the Object)* | — |
+| `pinned in` | — (Subject is the item) | *(Items are pinned in a collection; the collection is the Object)* | — |
+| `featured in` | — (Subject is the item) | *(Items are featured in a collection; the collection is the Object)* | — |
 
 ### Comparison
 
@@ -1072,11 +1072,11 @@ Alice has fewer delegators but much more capital behind her = whale-backed deleg
 
 ---
 
-### Example 5: Curating a Stack
+### Example 5: Curating a Collection
 
-**Scenario:** Alice creates a "DeFi Blue Chips" stack and curates it.
+**Scenario:** Alice creates a "DeFi Blue Chips" collection and curates it.
 
-**Stack structure (all attributive — these are facts about the stack):**
+**Collection structure (all attributive — these are facts about the collection):**
 ```
 (DeFi Blue Chips, is, curated list)
 (DeFi Blue Chips, has tag, DeFi)
@@ -1089,14 +1089,14 @@ Alice has fewer delegators but much more capital behind her = whale-backed deleg
 (DeFi Blue Chips, contain, Curve)
 ```
 
-**Community engagement (depositional — people stake on the stack):**
+**Community engagement (depositional — people stake on the collection):**
 ```
 (I, like, DeFi Blue Chips)          — TVL: 50 ETH from 300 depositors
 (I, follow, DeFi Blue Chips)        — TVL: 20 ETH from 150 depositors
 (I, recommended, DeFi Blue Chips)    — TVL: 10 ETH from 40 depositors
 ```
 
-**Ranking items within the stack (depositional — opinion markets):**
+**Ranking items within the collection (depositional — opinion markets):**
 ```
 (Aave, better than, Compound)           — TVL: 15 ETH
 (Uniswap, better than, Curve)           — TVL: 8 ETH
@@ -1390,8 +1390,8 @@ For opinion and sentiment predicates, always create the pair. The ratio between 
 BAD:   (Vitalik Buterin, authored by, Ethereum Whitepaper)   ← backwards
 GOOD:  (Ethereum Whitepaper, authored by, Vitalik Buterin)   ← the work was authored by the person
 
-BAD:   (Alice, curated by, DeFi Stack)    ← backwards
-GOOD:  (DeFi Stack, curated by, Alice)     ← the stack was curated by the person
+BAD:   (Alice, curated by, DeFi Blue Chips)    ← backwards
+GOOD:  (DeFi Blue Chips, curated by, Alice)     ← the collection was curated by the person
 
 BAD:   (Ethereum, created by, Vitalik)     ← actually this is correct
 BAD:   (Vitalik, created, Ethereum)        ← "created" is not the canonical predicate

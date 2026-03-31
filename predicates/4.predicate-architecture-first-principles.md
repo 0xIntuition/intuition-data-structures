@@ -495,7 +495,7 @@ Approach D: FATAL. Predicates become opaque CIDs. Cannot render triples.
 
 ## The Honest Trade-Off Table
 
-| | A: Plain String | B: String + Triples | C: DefinedTerm + Routing | D: IPFS |
+| | A: Plain String | B: String + Triples | C: Minimal DefinedTerm + Routing | D: IPFS |
 |---|---|---|---|---|
 | **Gas (one-time bootstrap)** | ~$0.01 | ~$2-5 | ~$0.50-1 | ~$0.10 |
 | **Gas (per new predicate)** | Negligible | ~$0.10 | ~$0.05 | Negligible |
@@ -542,6 +542,8 @@ This is a decentralization principle. It sounds compelling. But let's ask: **who
 ## My Recommendation
 
 **Approach C: DefinedTerm atoms with minimal on-chain routing triples.**
+
+If the live question is specifically **inline JSON object vs IPFS-backed JSON object**, the answer is: **inline JSON wins decisively over IPFS for predicates**. If you are going to have a predicate document at all, storing it directly in atom data is superior to storing a pointer to it.
 
 Here's why, working from the principles that actually matter:
 
@@ -596,6 +598,29 @@ Fewer on-chain interpretation triples = less operational overhead, less governan
 **Trade-off 3: Canonical JSON serialization.** The SDK must produce identical JSON for the same predicate. This is already solved for every other atom type. The same serialization function handles predicates.
 
 **Trade-off 4: DefinedTerm predicates look like DefinedTerm tags.** Both `follow` (predicate) and `DeFi` (tag) are `@type: DefinedTerm`. You distinguish them by: (a) the on-chain registry triple `(predicate_registry, contain, follow_atom)`, or (b) observing which position the atom occupies in triples (predicate position vs object position). This is a non-issue in practice — the indexer already handles positional context.
+
+### First-Principles Verdict: Inline JSON vs IPFS
+
+If those are the two options on the table, here is the clean conclusion:
+
+| Question | Inline JSON object in atom data | JSON object on IPFS with URI in atom data |
+|---|---|---|
+| Can chain data explain itself? | **Yes** | No |
+| Does understanding require an external network fetch? | No | **Yes** |
+| Does availability depend on pinning / gateway health? | No | **Yes** |
+| Is the atom still permanent and deterministic? | Yes | Yes |
+| Do documentation changes force a new atom ID? | **Yes** | **Yes** |
+| Does IPFS actually solve mutability? | No | No |
+| Does this minimize on-chain bytes? | No | **Yes** |
+| Is that byte savings worth the semantic dependency? | Usually no | Only if the document is too large to justify inline storage |
+
+The decisive point is this:
+
+- **Inline JSON and IPFS JSON have the same immutability property.** In both designs, changing the JSON means changing the atom ID.
+- **IPFS does not buy you meaningful flexibility.** It mostly buys smaller atom data at the cost of external dependency and worse self-description.
+- **For predicate infrastructure, semantic availability matters more than saving a few hundred bytes.**
+
+So if the choice is between inline JSON and IPFS-backed JSON, choose the inline JSON route represented by **Approach C**.
 
 ---
 
@@ -791,6 +816,7 @@ If Intuition aspires to be protocol-grade infrastructure (not a product with a b
 | Decision | Recommendation |
 |---|---|
 | Atom data format | DefinedTerm JSON-LD (minimal: `@context`, `@type`, `name`, `description`) |
+| If choosing between inline JSON vs IPFS JSON | **Inline JSON** |
 | On-chain triples | 2 per predicate: market routing (`has type`) + registry (`contain`) |
 | Off-chain | i18n labels, conjugation, Schema.org mappings, usage examples, documentation |
 | Authority wallet | Creates market routing triples + registry triples (reduced scope vs Approach B) |
