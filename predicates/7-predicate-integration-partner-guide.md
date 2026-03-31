@@ -58,7 +58,7 @@ Is the depositor making a claim about themselves?
           │         (Rust, better than, Solidity)
           └── NO  → Subject = the entity the claim is about
                     (Ethereum, created by, Vitalik)
-                    (DeFi Stack, contain, Aave)
+                    (DeFi Blue Chips, contain, Aave)
 ```
 
 ---
@@ -113,9 +113,9 @@ await createTriple({
   deposit: parseEther('0.01'),
 });
 
-// Stack curation: Adding an item to a stack
+// Collection curation: adding an item to a collection
 await createTriple({
-  subject: defiStackAtomId,
+  subject: defiBlueChipsAtomId,
   predicate: CONTAIN,        // "contain"
   object: aaveAtomId,
   deposit: parseEther('0.01'),
@@ -177,7 +177,7 @@ The triple asserts a fact about a specific entity. Deposits mean "I agree this i
 
 ```
 (Ethereum, created by, Vitalik)     ← factual claim
-(DeFi Stack, contain, Aave)         ← curation fact
+(DeFi Blue Chips, contain, Aave)    ← curation fact
 ```
 
 **Your app should:** Create the specific `(entity, predicate, object)` triple if it doesn't exist, then deposit.
@@ -278,7 +278,7 @@ Before creating a custom predicate, check if an enshrined predicate already cove
 | User saves/bookmarks something | `like` |
 | User subscribes to updates | `follow` |
 | User rates something positively | `like` or `endorse` (based on strength) |
-| User adds item to a list | `contain` (Stack as subject) |
+| User adds item to a list | `contain` (collection as subject) |
 | User tags something | `has tag` |
 | User thinks X is better than Y | `better than` |
 | User expresses positive outlook | `bullish on` |
@@ -289,8 +289,8 @@ Before creating a custom predicate, check if an enshrined predicate already cove
 BAD:   (Vitalik, authored by, Ethereum Whitepaper)   ← backwards
 GOOD:  (Ethereum Whitepaper, authored by, Vitalik)    ← the work was authored by the person
 
-BAD:   (Alice, curated by, DeFi Stack)                ← backwards
-GOOD:  (DeFi Stack, curated by, Alice)                ← the stack was curated by Alice
+BAD:   (Alice, curated by, DeFi Blue Chips)           ← backwards
+GOOD:  (DeFi Blue Chips, curated by, Alice)           ← the collection was curated by Alice
 ```
 
 Check the canonical direction in `predicate-usage-by-entity-type.md`.
@@ -308,35 +308,3 @@ COMPLETE:    (I, bullish on, Ethereum)     ← exists
 ```
 
 The ratio between paired markets is the signal. A lone bullish market without a bearish counterpart is less informative.
-
----
-
-## Proposing New Predicates
-
-If your integration needs a predicate that isn't enshrined, you have two options:
-
-### Option A: Use a Custom Predicate
-
-Create an atom with your predicate string and use it in triples. This works immediately — the protocol doesn't restrict what strings can be predicates. But custom predicates won't be recognized by the broader ecosystem (indexer, API metadata, frontend rendering).
-
-### Option B: Propose Enshrinement
-
-Submit a proposal following the process in `predicate-governance.md`. Your proposal needs:
-- The canonical string (base form, lowercase)
-- Market pattern (depositional/attributive/comparative)
-- At least two independent use cases
-- Evidence that existing enshrined predicates don't cover the need
-
----
-
-## Reference
-
-| Document | What It Covers |
-|---|---|
-| `enshrined-predicates-launch-set.md` | The 25 predicates shipping at launch, with atom IDs |
-| `predicate-analysis.md` | Full 100-predicate catalog, DefinedTerm schemas, representation trade-offs |
-| `predicate-usage-by-entity-type.md` | Per-entity-type predicate tables, market design, examples |
-| `predicate-display-and-conjugation.md` | Why base form, how the display layer conjugates |
-| `predicate-i18n-strategy.md` | Multi-language rendering architecture |
-| `predicate-migration-guide.md` | Migrating from old `follows`/`contains` to `follow`/`contain` |
-| `predicate-governance.md` | How to propose, approve, and deprecate predicates |

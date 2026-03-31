@@ -1,6 +1,6 @@
 # Canonical Predicate Catalog Analysis
 
-## Top 100 Predicates — Plain Strings
+## Top 100 Predicates
 
 ### Identity and Classification (1-8)
 
@@ -35,7 +35,7 @@
 | # | Predicate | Intent | Typical Triple Pattern |
 |---|---|---|---|
 | 19 | `contains` | Collection membership | `(L1 Watchlist, contains, Ethereum)` |
-| 20 | `curated by` | Collection ownership | `(DeFi Stack, curated by, Alice)` |
+| 20 | `curated by` | Collection ownership | `(DeFi Blue Chips, curated by, Alice)` |
 | 21 | `pinned in` | Highlighted in collection | `(Ethereum, pinned in, L1 Watchlist)` |
 | 22 | `featured in` | Editorially promoted | `(Uniswap, featured in, Top DEXs)` |
 | 23 | `ranked above` | Explicit ordering | `(Ethereum, ranked above, Solana)` |
@@ -1493,8 +1493,6 @@ atom ID:    keccak256(ATOM_SALT, keccak256(toHex("follows")))
 | Human readability | Readable in raw transaction data and block explorers. |
 | Semantic richness | Zero embedded metadata. Meaning must be documented externally. |
 | Schema.org alignment | None inherent, but can be mapped externally via a registry. |
-
-**This is the current Intuition approach.** The SDK (`intuition/sdk/src/predicates.ts`) exports plain strings: `"is"`, `"has tag"`, `"contains"`, `"follows"`, etc.
 
 ### Option B: JSON-LD / DefinedTerm On-Chain
 
