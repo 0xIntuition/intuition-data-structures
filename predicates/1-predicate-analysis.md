@@ -1494,8 +1494,6 @@ atom ID:    keccak256(ATOM_SALT, keccak256(toHex("follows")))
 | Semantic richness | Zero embedded metadata. Meaning must be documented externally. |
 | Schema.org alignment | None inherent, but can be mapped externally via a registry. |
 
-**This is the current Intuition approach.** The SDK (`intuition/sdk/src/predicates.ts`) exports plain strings: `"is"`, `"has tag"`, `"contains"`, `"follows"`, etc.
-
 ### Option B: JSON-LD / DefinedTerm On-Chain
 
 The predicate atom data is a JSON document stored directly as the atom bytes.
