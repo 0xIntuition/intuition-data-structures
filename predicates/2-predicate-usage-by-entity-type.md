@@ -119,7 +119,7 @@ These are still depositional (anyone can deposit to agree), but the Subject is o
 **Community-scoped subjects** — a community or role atom instead of `I`:
 
 ```
-(developers, recommends, Foundry)          ← scoped to developers
+(developers, recommend, Foundry)          ← scoped to developers
 (Ethereum community, support, EIP-4844)   ← scoped to a community
 (security researchers, trust, Trail of Bits) ← scoped to a role
 ```
@@ -127,9 +127,9 @@ These are still depositional (anyone can deposit to agree), but the Subject is o
 These create **scoped markets** where the same predicate can have different TVL across different communities. You could have:
 
 ```
-(I, recommends, Foundry)                     ← universal market: 500 ETH
-(developers, recommends, Foundry)             ← developer-scoped: 300 ETH
-(auditors, recommends, Foundry)               ← auditor-scoped: 20 ETH
+(I, recommend, Foundry)                     ← universal market: 500 ETH
+(developers, recommend, Foundry)             ← developer-scoped: 300 ETH
+(auditors, recommend, Foundry)               ← auditor-scoped: 20 ETH
 ```
 
 This is a valid extension pattern but should be used sparingly. Each community subject fragments the market. The universal `I` market should always exist as the primary signal; scoped markets are supplementary.
@@ -260,10 +260,9 @@ These use specific entity Subjects. The market is about whether the claim is TRU
 
 | Predicate | Example Triple | What Deposits Mean |
 |---|---|---|
-| `is` | `(Ethereum, is, blockchain)` | "I agree with this classification" |
-| `has type` | `(Uniswap, has type, DEX)` | "I agree with this type assignment" |
-| `instance of` | `(USDC, instance of, stablecoin)` | "I agree USDC is a stablecoin" |
-| `subclass of` | `(DEX, subclass of, exchange)` | "I agree with this taxonomy" |
+| `has type` | `(Uniswap, has type, Decentralized Exchange)` | "I agree with this formal type assignment" |
+| `has category` | `(Uniswap, has category, DeFi)` | "I agree with this product-level category" |
+| `has tag` | `(Aave, has tag, lending)` | "I agree with this free-form tag" |
 | `same as` | `(ETH, same as, Ether)` | "I agree these are the same entity" |
 | `created by` | `(Ethereum, created by, Vitalik)` | "I agree with this attribution" |
 | `authored by` | `(Whitepaper, authored by, Satoshi)` | "I agree with this authorship claim" |
@@ -359,12 +358,10 @@ A human identity — the most relationship-rich entity type in a social knowledg
 
 | Predicate | Expected Object Type | Example Triple | Priority |
 |---|---|---|---|
-| `is` | `DefinedTerm` | `(Vitalik, is, researcher)` | core |
 | `has type` | `DefinedTerm` | `(Vitalik, has type, public figure)` | common |
 | `has tag` | `DefinedTerm` | `(Alice, has tag, Solidity developer)` | core |
 | `has category` | `DefinedTerm` | `(Alice, has category, builder)` | common |
 | `same as` | `Person` | `(vitalik.eth, same as, Vitalik Buterin)` | common |
-| `alias of` | `Person` | `(V, alias of, Vitalik Buterin)` | optional |
 | `linked account` | `SocialMediaAccount` | `(Alice, linked account, x.com/alice_eth)` | core |
 | `url` | `URL` | `(Alice, url, alice.xyz)` | common |
 | `imgUrl` | `ImageURL` | `(Alice, imgUrl, alice-avatar.png)` | common |
@@ -402,7 +399,7 @@ All opinion predicates should use the depositional pattern. The whole point is t
 | `bearish on` | `Any` | `(I, bearish on, Memecoins)` | Aggregate bearish conviction | common |
 | `neutral on` | `Any` | `(I, neutral on, L2 wars)` | Explicit fence-sitting count | optional |
 | `reviewed` | `SoftwareSourceCode` / `Product` / `Thing` | `(I, reviewed, Uniswap v4)` | Number of reviewers + conviction weight | common |
-| `recommended` | `Any` | `(I, recommended, Hardhat)` | Recommendation strength | common |
+| `recommend` | `Any` | `(I, recommend, Hardhat)` | Recommendation strength | common |
 
 ### Professional and Knowledge (Hybrid)
 
@@ -452,7 +449,6 @@ A company, foundation, DAO, protocol team, or any collective entity.
 
 | Predicate | Expected Object Type | Example Triple | Priority |
 |---|---|---|---|
-| `is` | `DefinedTerm` | `(Uniswap Labs, is, DeFi company)` | core |
 | `has type` | `DefinedTerm` | `(Ethereum Foundation, has type, non-profit)` | core |
 | `has tag` | `DefinedTerm` | `(Aave, has tag, lending)` | core |
 | `has category` | `DefinedTerm` | `(Chainlink, has category, oracle)` | common |
@@ -506,7 +502,6 @@ A protocol, dApp, library, framework, or any code-based project.
 
 | Predicate | Expected Object Type | Example Triple | Priority |
 |---|---|---|---|
-| `is` | `DefinedTerm` | `(Uniswap, is, DEX)` | core |
 | `has type` | `DefinedTerm` | `(MetaMask, has type, wallet)` | core |
 | `has tag` | `DefinedTerm` | `(Aave, has tag, lending)` | core |
 | `has category` | `DefinedTerm` | `(Hardhat, has category, developer tools)` | common |
@@ -576,11 +571,9 @@ A fungible token on an EVM chain.
 
 | Predicate | Expected Object Type | Example Triple | Priority |
 |---|---|---|---|
-| `is` | `DefinedTerm` | `(USDC, is, stablecoin)` | core |
 | `has type` | `DefinedTerm` | `(UNI, has type, governance token)` | core |
 | `has tag` | `DefinedTerm` | `(AAVE, has tag, DeFi)` | core |
 | `has category` | `DefinedTerm` | `(WBTC, has category, wrapped asset)` | common |
-| `instance of` | `DefinedTerm` | `(USDC, instance of, stablecoin)` | common |
 | `url` | `URL` | `(USDC, url, circle.com/usdc)` | common |
 | `imgUrl` | `ImageURL` | `(ETH, imgUrl, eth-diamond.svg)` | common |
 | `has description` | `String` | `(UNI, has description, "Governance token of the Uniswap protocol")` | common |
@@ -620,7 +613,6 @@ A conference, hackathon, governance event, or notable occurrence.
 
 | Predicate | Expected Object Type | Example Triple | Priority |
 |---|---|---|---|
-| `is` | `DefinedTerm` | `(Devcon, is, conference)` | core |
 | `has type` | `DefinedTerm` | `(ETHDenver, has type, hackathon)` | core |
 | `has tag` | `DefinedTerm` | `(Devcon, has tag, Ethereum)` | core |
 | `located in` | `Location` | `(Devcon, located in, Bangkok)` | core |
@@ -660,7 +652,6 @@ An article, whitepaper, blog post, research paper, or written work.
 
 | Predicate | Expected Object Type | Example Triple | Priority |
 |---|---|---|---|
-| `is` | `DefinedTerm` | `(Bitcoin Whitepaper, is, whitepaper)` | core |
 | `has type` | `DefinedTerm` | `(EIP-4844, has type, improvement proposal)` | core |
 | `has tag` | `DefinedTerm` | `(Bitcoin Whitepaper, has tag, cryptography)` | core |
 | `url` | `URL` | `(Bitcoin Whitepaper, url, bitcoin.org/bitcoin.pdf)` | core |
@@ -705,7 +696,6 @@ A physical or digital product, hardware device, or consumer good.
 
 | Predicate | Expected Object Type | Example Triple | Priority |
 |---|---|---|---|
-| `is` | `DefinedTerm` | `(Ledger Nano X, is, hardware wallet)` | core |
 | `has type` | `DefinedTerm` | `(Ledger Nano X, has type, cold storage)` | core |
 | `has tag` | `DefinedTerm` | `(Ledger, has tag, security)` | core |
 | `url` | `URL` | `(Ledger Nano X, url, ledger.com)` | common |
@@ -735,7 +725,6 @@ Collections are curated groups of atoms. They may represent watchlists, director
 
 | Predicate | Expected Object Type | Example Triple | Priority |
 |---|---|---|---|
-| `is` | `DefinedTerm` | `(DeFi Blue Chips, is, watchlist)` | core |
 | `has type` | `DefinedTerm` | `(DeFi Blue Chips, has type, curated list)` | common |
 | `has tag` | `DefinedTerm` | `(Layer 1 Watchlist, has tag, crypto)` | core |
 | `has description` | `String` | `(DeFi Blue Chips, has description, "Top DeFi protocols by TVL")` | common |
@@ -769,7 +758,6 @@ A geographic place, city, country, or virtual region.
 
 | Predicate | Expected Object Type | Example Triple | Priority |
 |---|---|---|---|
-| `is` | `DefinedTerm` | `(Berlin, is, city)` | core |
 | `has type` | `DefinedTerm` | `(Crypto Valley, has type, tech hub)` | common |
 | `has tag` | `DefinedTerm` | `(Zug, has tag, crypto-friendly)` | common |
 | `url` | `URL` | `(Crypto Valley, url, cryptovalley.swiss)` | optional |
@@ -787,11 +775,7 @@ A tag, keyword, concept, standard, or categorical label used as an Object in man
 
 | Predicate | Expected Object Type | Example Triple | Priority |
 |---|---|---|---|
-| `is` | `DefinedTerm` | `(DeFi, is, concept)` | common |
-| `subclass of` | `DefinedTerm` | `(DEX, subclass of, exchange)` | common |
-| `instance of` | `DefinedTerm` | `(Uniswap, instance of, DEX)` | common |
 | `same as` | `DefinedTerm` | `(DeFi, same as, decentralized finance)` | common |
-| `alias of` | `DefinedTerm` | `(defi, alias of, DeFi)` | optional |
 | `has description` | `String` | `(ZK proofs, has description, "Zero-knowledge proof systems")` | common |
 | `url` | `URL` | `(ERC-20, url, eips.ethereum.org/EIPS/eip-20)` | optional |
 | `alternative to` | `DefinedTerm` | `(PoS, alternative to, PoW)` | optional |
@@ -809,7 +793,6 @@ A platform account atom linked to an identity.
 
 | Predicate | Expected Object Type | Example Triple | Priority |
 |---|---|---|---|
-| `is` | `DefinedTerm` | `(x.com/alice_eth, is, social account)` | common |
 | `has type` | `DefinedTerm` | `(x.com/alice_eth, has type, X account)` | common |
 | `url` | `URL` | `(x.com/alice_eth, url, x.com/alice_eth)` | core |
 | `imgUrl` | `ImageURL` | `(x.com/alice_eth, imgUrl, alice-profile.jpg)` | optional |
@@ -827,7 +810,6 @@ A deployed contract on an EVM chain.
 
 | Predicate | Expected Object Type | Example Triple | Priority |
 |---|---|---|---|
-| `is` | `DefinedTerm` | `(0xUniRouter, is, router contract)` | core |
 | `has type` | `DefinedTerm` | `(0xUniRouter, has type, DEX router)` | core |
 | `has tag` | `DefinedTerm` | `(0xUniRouter, has tag, DeFi)` | common |
 | `created by` | `Person` / `Organization` | `(0xUniRouter, created by, Uniswap Labs)` | core |
@@ -848,7 +830,6 @@ These predicates work with **any** Subject entity type:
 
 | Predicate | Expected Object Type | Notes |
 |---|---|---|
-| `is` | `DefinedTerm` | Type or identity assertion |
 | `has type` | `DefinedTerm` | Formal classification |
 | `has tag` | `DefinedTerm` | Free-form tagging |
 | `has category` | `DefinedTerm` | Structured taxonomy |
@@ -856,7 +837,6 @@ These predicates work with **any** Subject entity type:
 | `imgUrl` | `ImageURL` | Visual representation |
 | `has description` | `String` | Textual description |
 | `same as` | Same entity type | Cross-representation identity |
-| `alias of` | Same entity type | Alternative name |
 | `contain` | `Any` | Collection membership (when Subject is a container) |
 | `created by` | `Person` / `Organization` | Origin attribution |
 | `like` | `Any` | Lightweight positive signal (when Subject is a Person) |
@@ -1078,7 +1058,7 @@ Alice has fewer delegators but much more capital behind her = whale-backed deleg
 
 **Collection structure (all attributive — these are facts about the collection):**
 ```
-(DeFi Blue Chips, is, curated list)
+(DeFi Blue Chips, has type, curated list)
 (DeFi Blue Chips, has tag, DeFi)
 (DeFi Blue Chips, has description, "Top DeFi protocols by TVL and track record")
 (DeFi Blue Chips, curated by, Alice)
@@ -1093,7 +1073,7 @@ Alice has fewer delegators but much more capital behind her = whale-backed deleg
 ```
 (I, like, DeFi Blue Chips)          — TVL: 50 ETH from 300 depositors
 (I, follow, DeFi Blue Chips)        — TVL: 20 ETH from 150 depositors
-(I, recommended, DeFi Blue Chips)    — TVL: 10 ETH from 40 depositors
+(I, recommend, DeFi Blue Chips)      — TVL: 10 ETH from 40 depositors
 ```
 
 **Ranking items within the collection (depositional — opinion markets):**
@@ -1184,7 +1164,7 @@ These are specific factual claims about Alice. Others deposit to confirm the cla
 
 **Factual triples that inform the debate (attributive):**
 ```
-(Bitcoin, is, cryptocurrency)
+(Bitcoin, has type, cryptocurrency)
 (Bitcoin, created by, Satoshi Nakamoto)
 (Bitcoin, has tag, store of value)
 (Bitcoin, has tag, digital gold)
@@ -1201,7 +1181,7 @@ These are specific factual claims about Alice. Others deposit to confirm the cla
 
 **Attributive facts about the event:**
 ```
-(Devcon 7, is, conference)
+(Devcon 7, has type, conference)
 (Devcon 7, has type, developer conference)
 (Devcon 7, located in, Bangkok)
 (Devcon 7, created by, Ethereum Foundation)
@@ -1215,7 +1195,7 @@ These are specific factual claims about Alice. Others deposit to confirm the cla
 **Depositional engagement signals:**
 ```
 (I, like, Devcon 7)             — TVL: 25 ETH from 500 depositors
-(I, recommended, Devcon 7)       — TVL: 8 ETH from 100 depositors
+(I, recommend, Devcon 7)         — TVL: 8 ETH from 100 depositors
 ```
 
 **Items featured at the event (attributive):**
@@ -1233,8 +1213,6 @@ These are specific factual claims about Alice. Others deposit to confirm the cla
 
 **Attributive facts (all specific to USDC):**
 ```
-(USDC, is, stablecoin)
-(USDC, instance of, stablecoin)
 (USDC, has type, fiat-backed stablecoin)
 (USDC, created by, Circle)
 (USDC, implement, ERC-20)
@@ -1268,7 +1246,7 @@ These are specific factual claims about Alice. Others deposit to confirm the cla
 
 **Attributive facts about Vitalik:**
 ```
-(Vitalik Buterin, is, researcher)
+(Vitalik Buterin, has type, researcher)
 (Vitalik Buterin, has type, public figure)
 (Vitalik Buterin, founded, Ethereum)
 (Vitalik Buterin, founded, Bitcoin Magazine)
@@ -1344,7 +1322,7 @@ The triple already has direction via subject/object ordering. Adding "is followe
 BAD:   (Aave, provides lending on, Ethereum)      ← too specific, one-off predicate
 BAD:   (Aave, is a DeFi lending protocol on, Ethereum)  ← sentence in a predicate
 
-GOOD:  (Aave, is, lending protocol)
+GOOD:  (Aave, has type, lending protocol)
        (Aave, has tag, DeFi)
        (Aave, available on, Ethereum)
 ```
@@ -1414,7 +1392,7 @@ Always check the canonical direction documented in the predicate catalog. The su
 
 **Phase 2 — Factual claims emerge (attributive):**
 ```
-(Wormhole Exploit, is, bridge hack)
+(Wormhole Exploit, has type, bridge hack)
 (Wormhole Exploit, has tag, security incident)
 (Wormhole Bridge, audited by, Neodyme)                    — TVL: 5 ETH (people confirm the audit happened)
 (Wormhole Exploit, evidenced by, etherscan.io/tx/0x...)   — TVL: 20 ETH (people confirm the evidence)
@@ -1445,14 +1423,14 @@ Always check the canonical direction documented in the predicate catalog. The su
 (I, like, Foundry)                 — TVL: 80 ETH from 1,200 depositors
 (Hardhat, better than, Foundry)  — TVL: 15 ETH from 200 depositors
 (Foundry, better than, Hardhat)  — TVL: 50 ETH from 600 depositors
-(I, recommended, Foundry)           — TVL: 30 ETH from 300 depositors
-(I, recommended, Hardhat)           — TVL: 10 ETH from 100 depositors
+(I, recommend, Foundry)             — TVL: 30 ETH from 300 depositors
+(I, recommend, Hardhat)             — TVL: 10 ETH from 100 depositors
 ```
 
 **Attributive context:**
 ```
-(Hardhat, is, development framework)
-(Foundry, is, development framework)
+(Hardhat, has type, development framework)
+(Foundry, has type, development framework)
 (Hardhat, created by, NomicLabs)
 (Foundry, created by, Paradigm)
 (Hardhat, use, JavaScript)
@@ -1499,7 +1477,7 @@ TRICKY:  How do you express "Ethereum is NOT a security"?
 ```
 
 There is no `is not` predicate. Two approaches:
-1. Use the positive claim and let low/no TVL speak: `(Ethereum, is, security)` — if no one deposits, the market has spoken.
+1. Use the positive claim and let low/no TVL speak: `(Ethereum, has type, security)` — if no one deposits, the market has spoken.
 2. Use the counter-market: `(I, agree with, Ethereum is not a security)` and `(I, disagree with, Ethereum is not a security)`.
 
 Option 2 is better because it creates an explicit market. Absence of deposits is ambiguous (maybe no one noticed the triple), but an active market with a strong ratio is unambiguous signal.
