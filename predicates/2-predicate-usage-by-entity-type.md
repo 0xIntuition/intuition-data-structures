@@ -100,7 +100,7 @@ Because predicates read as `(I, predicate, object)`, verb predicates must use **
 
 For attributive triples like `(Aave, use, Chainlink)`, the base form reads slightly differently than English prose ("Aave uses Chainlink"), but predicates are **relationship labels**, not sentences. Base form is standard in ontology design (RDF, Wikidata) and is the correct choice when `I` is the primary subject pattern.
 
-**SDK backward compatibility:** The current SDK exports `CONTAINS_PREDICATE = 'contains'`, `IS_PREDICATE = 'is'`, etc. Migrating to base form predicates will create new atom IDs (since `"follow"` hashes differently from `"follows"`). This is a planned migration — the old predicates remain valid but the new base-form predicates become canonical going forward.
+**SDK compatibility:** Use the generated constants and atom data from `@0xintuition/predicates`. Do not hand-roll legacy plain strings such as `"contains"`/`"is"` or third-person forms such as `"follows"`; they produce different atom IDs and fragment markets.
 
 #### When NOT to Use `I`
 

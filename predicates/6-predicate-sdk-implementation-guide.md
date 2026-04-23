@@ -337,21 +337,27 @@ export const PREDICATE_DEFS: Record<string, PredicateDefinition> = {
   },
 
   // --- Identity and Classification ---
-  is: {
-    name: "is",
-    description: "Asserts identity, type membership, or definitional equivalence between subject and object",
+  hasType: {
+    name: "has type",
+    description: "Classifies the subject under a formal taxonomy or defined-term object",
+    marketPattern: "attributive",
+    conjugates: false,
+  },
+  sameAs: {
+    name: "same as",
+    description: "Declares that the subject and object refer to the same real-world entity",
     marketPattern: "attributive",
     conjugates: false,
   },
   hasTag: {
     name: "has tag",
-    description: "Assigns a reusable tag or keyword to the subject for filtering and discovery",
+    description: "Assigns a free-form keyword or tag atom to the subject",
     marketPattern: "attributive",
     conjugates: false,
   },
-  hasType: {
-    name: "has type",
-    description: "Classifies the subject under a formal type or category",
+  hasCategory: {
+    name: "has category",
+    description: "Places the subject in a product-level browsable category",
     marketPattern: "attributive",
     conjugates: false,
   },
@@ -542,14 +548,14 @@ The SDK ships with pre-computed atom IDs for the chosen strategy. The project co
 
 ```typescript
 // For inline JSON strategy:
-export const FOLLOW = calculateAtomId(getInlineAtomData('follow'));
-export const LIKE = calculateAtomId(getInlineAtomData('like'));
-export const TRUST = calculateAtomId(getInlineAtomData('trust'));
+export const FOLLOW_ID = calculateAtomId(getInlineAtomData('follow'));
+export const LIKE_ID = calculateAtomId(getInlineAtomData('like'));
+export const TRUST_ID = calculateAtomId(getInlineAtomData('trust'));
 // ...
 
 // For IPFS strategy (CIDs are fixed after initial upload):
-// export const FOLLOW = calculateAtomId('ipfs://bafyreif7x...');
-// export const LIKE = calculateAtomId('ipfs://bafyreig3m...');
+// export const FOLLOW_ID = calculateAtomId('ipfs://bafyreif7x...');
+// export const LIKE_ID = calculateAtomId('ipfs://bafyreig3m...');
 // ...
 ```
 
@@ -570,13 +576,13 @@ export const I_SUBJECT_ID = calculateAtomId(I_SUBJECT_DATA);
 
 ## Creating Triples
 
-The developer-facing API for creating triples is the same regardless of strategy. The SDK resolves predicate constants to atom IDs internally.
+The developer-facing API for creating triples is the same regardless of strategy. The exported predicate constants are atom IDs for the chosen canonical strategy.
 
 ```typescript
 // Depositional triple: user follows Vitalik
 await createTriple({
   subject: I_SUBJECT_ID,
-  predicate: FOLLOW,
+  predicate: FOLLOW_ID,
   object: vitalikAtomId,
   deposit: parseEther('0.1'),
 });
@@ -584,7 +590,7 @@ await createTriple({
 // Attributive triple: fact about Ethereum
 await createTriple({
   subject: ethereumAtomId,
-  predicate: CREATED_BY,
+  predicate: CREATED_BY_ID,
   object: vitalikAtomId,
   deposit: parseEther('0.01'),
 });
@@ -592,7 +598,7 @@ await createTriple({
 // Collection curation: adding an item
 await createTriple({
   subject: defiBlueChipsAtomId,
-  predicate: CONTAIN,
+  predicate: CONTAIN_ID,
   object: aaveAtomId,
   deposit: parseEther('0.01'),
 });
@@ -712,8 +718,8 @@ for (const [key, def] of Object.entries(PREDICATE_DEFS)) {
   const patternId = def.marketPattern === 'depositional' ? depositionalId
                   : def.marketPattern === 'attributive'  ? attributiveId
                   : comparativeId;
-  await createTriple({ subject: PREDICATE_IDS[key], predicate: HAS_TYPE, object: patternId });
-  await createTriple({ subject: registryId, predicate: CONTAIN, object: PREDICATE_IDS[key] });
+  await createTriple({ subject: PREDICATE_IDS[key], predicate: HAS_TYPE_ID, object: patternId });
+  await createTriple({ subject: registryId, predicate: CONTAIN_ID, object: PREDICATE_IDS[key] });
 }
 ```
 
