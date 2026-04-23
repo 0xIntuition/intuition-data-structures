@@ -257,7 +257,7 @@ The rule is simple:
 Input:
 
 ```text
-predicateAtomId = FOLLOW
+predicateAtomId = FOLLOW_ID
 locale = "fr"
 subjectContext = "first-person"
 ```
@@ -265,11 +265,11 @@ subjectContext = "first-person"
 Resolution:
 
 ```text
-1. Read FOLLOW atom data
+1. Read FOLLOW_ID atom data
    → name = "follow"
    → description = "Directional subscription or tracking..."
 
-2. Query localization entries for FOLLOW
+2. Query localization entries for FOLLOW_ID
    → find entry for locale = fr
 
 3. Resolve source
@@ -286,7 +286,7 @@ Resolution:
 If French has not been added yet:
 
 ```text
-1. Read FOLLOW atom data
+1. Read FOLLOW_ID atom data
 2. No localization entry for fr
 3. Fallback to English atom name
    → "follow"

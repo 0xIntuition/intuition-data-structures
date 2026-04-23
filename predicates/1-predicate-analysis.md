@@ -1,176 +1,175 @@
 # Canonical Predicate Catalog Analysis
 
-## Top 100 Predicates
+## Canonical Launch Predicate Catalog
 
-### Identity and Classification (1-8)
+The launch catalog currently contains 97 predicates after removing overloaded/de-duplicated identity predicates (`is`, `alias of`, `instance of`, and `subclass of`). Use `has type`, `same as`, `has tag`, and `has category` for the remaining identity/classification cases.
 
-| # | Predicate | Intent | Typical Triple Pattern |
-|---|---|---|---|
-| 1 | `is` | Identity or type assertion | `(Ethereum, is, blockchain)` |
-| 2 | `has type` | Type classification | `(Uniswap, has type, DEX)` |
-| 3 | `same as` | Cross-representation identity | `(ETH, same as, Ether)` |
-| 4 | `alias of` | Alternative name | `(BTC, alias of, Bitcoin)` |
-| 5 | `instance of` | Class membership | `(USDC, instance of, stablecoin)` |
-| 6 | `subclass of` | Taxonomy hierarchy | `(DEX, subclass of, exchange)` |
-| 7 | `has tag` | Free-form tagging | `(Aave, has tag, lending)` |
-| 8 | `has category` | Categorical grouping | `(Chainlink, has category, oracle)` |
-
-### Social and Reputation (9-18)
+### Identity and Classification (1-4)
 
 | # | Predicate | Intent | Typical Triple Pattern |
 |---|---|---|---|
-| 9 | `follows` | Unidirectional subscription | `(Alice, follows, Bob)` |
-| 10 | `likes` | Lightweight positive signal | `(Alice, likes, Ethereum)` |
-| 11 | `endorses` | Strong public support | `(Vitalik, endorses, EIP-4844)` |
-| 12 | `trusts` | Positive trust assertion | `(Alice, trusts, Auditor X)` |
-| 13 | `distrusts` | Negative trust assertion | `(Alice, distrusts, Scam Project)` |
-| 14 | `reviewed` | Review authorship | `(Alice, reviewed, Uniswap v4)` |
-| 15 | `recommended` | Active recommendation | `(Alice, recommended, Hardhat)` |
-| 16 | `reported` | Flagging for violation | `(Alice, reported, Phishing Site)` |
-| 17 | `blocked` | Exclusion from view | `(Alice, blocked, Spam Account)` |
-| 18 | `vouches for` | Personal credibility stake | `(Alice, vouches for, Bob)` |
+| 1 | `has type` | Formal taxonomy or defined-term classification | `(Uniswap, has type, Decentralized Exchange)` |
+| 2 | `same as` | Cross-representation identity and duplicate collapsing | `(ETH, same as, Ether)` |
+| 3 | `has tag` | Free-form tagging | `(Aave, has tag, lending)` |
+| 4 | `has category` | Product-level browsable grouping | `(Uniswap, has category, DeFi)` |
 
-### Curation and Containment (19-25)
+### Social and Reputation (5-14)
 
 | # | Predicate | Intent | Typical Triple Pattern |
 |---|---|---|---|
-| 19 | `contains` | Collection membership | `(L1 Watchlist, contains, Ethereum)` |
-| 20 | `curated by` | Collection ownership | `(DeFi Blue Chips, curated by, Alice)` |
-| 21 | `pinned in` | Highlighted in collection | `(Ethereum, pinned in, L1 Watchlist)` |
-| 22 | `featured in` | Editorially promoted | `(Uniswap, featured in, Top DEXs)` |
-| 23 | `ranked above` | Explicit ordering | `(Ethereum, ranked above, Solana)` |
-| 24 | `depends on` | Functional dependency | `(Arbitrum, depends on, Ethereum)` |
-| 25 | `alternative to` | Substitutability | `(Solana, alternative to, Ethereum)` |
+| 5 | `follow` | Unidirectional subscription | `(I, follow, Vitalik)` |
+| 6 | `like` | Lightweight positive signal | `(I, like, Ethereum)` |
+| 7 | `endorse` | Strong public support | `(I, endorse, EIP-4844)` |
+| 8 | `trust` | Positive trust assertion | `(I, trust, Auditor X)` |
+| 9 | `distrust` | Negative trust assertion | `(I, distrust, Scam Project)` |
+| 10 | `reviewed` | Review authorship | `(I, reviewed, Uniswap v4)` |
+| 11 | `recommend` | Active recommendation | `(I, recommend, Hardhat)` |
+| 12 | `reported` | Flagging for violation | `(I, reported, Phishing Site)` |
+| 13 | `blocked` | Exclusion from view | `(I, blocked, Spam Account)` |
+| 14 | `vouch for` | Personal credibility stake | `(I, vouch for, Bob)` |
 
-### Authorship and Contribution (26-31)
-
-| # | Predicate | Intent | Typical Triple Pattern |
-|---|---|---|---|
-| 26 | `created by` | Origin attribution | `(Ethereum, created by, Vitalik Buterin)` |
-| 27 | `authored by` | Written content attribution | `(Whitepaper, authored by, Satoshi)` |
-| 28 | `contributed to` | Contribution record | `(Alice, contributed to, OpenZeppelin)` |
-| 29 | `forked from` | Divergent copy | `(Sushiswap, forked from, Uniswap)` |
-| 30 | `derived from` | Adaptation or build-upon | `(Optimism, derived from, Ethereum)` |
-| 31 | `inspired by` | Creative influence | `(Solana, inspired by, PBFT)` |
-
-### Metadata and Linking (32-39)
+### Curation and Containment (15-22)
 
 | # | Predicate | Intent | Typical Triple Pattern |
 |---|---|---|---|
-| 32 | `linked account` | Platform identity linkage | `(Alice, linked account, x.com/alice)` |
-| 33 | `url` | Canonical web address | `(Ethereum, url, ethereum.org)` |
-| 34 | `imgUrl` | Image reference (legacy) | `(Ethereum, imgUrl, eth-logo.png)` |
-| 35 | `has description` | Textual description | `(Ethereum, has description, "A decentralized...")` |
-| 36 | `has source` | Authoritative reference | `(EIP-4844, has source, eips.ethereum.org/...)` |
-| 37 | `published at` | Publication venue | `(Whitepaper, published at, bitcoin.org)` |
-| 38 | `located in` | Geographic or logical location | `(Devcon, located in, Bangkok)` |
-| 39 | `available on` | Platform availability | `(USDC, available on, Ethereum)` |
+| 15 | `contain` | Collection membership | `(L1 Watchlist, contain, Ethereum)` |
+| 16 | `listed in` | Reverse collection membership | `(Ethereum, listed in, L1 Watchlist)` |
+| 17 | `curated by` | Collection ownership | `(DeFi Blue Chips, curated by, Alice)` |
+| 18 | `pinned in` | Highlighted in collection | `(Ethereum, pinned in, L1 Watchlist)` |
+| 19 | `featured in` | Editorially promoted | `(Uniswap, featured in, Top DEXs)` |
+| 20 | `ranked above` | Explicit ordering | `(Ethereum, ranked above, Solana)` |
+| 21 | `depend on` | Functional dependency | `(Arbitrum, depend on, Ethereum)` |
+| 22 | `alternative to` | Substitutability | `(Solana, alternative to, Ethereum)` |
 
-### Affiliation and Membership (40-45)
-
-| # | Predicate | Intent | Typical Triple Pattern |
-|---|---|---|---|
-| 40 | `member of` | Organization membership | `(Alice, member of, Ethereum Foundation)` |
-| 41 | `employed by` | Employment relationship | `(Alice, employed by, Uniswap Labs)` |
-| 42 | `founded` | Founder attribution | `(Vitalik, founded, Ethereum)` |
-| 43 | `affiliated with` | General association | `(Protocol X, affiliated with, a16z)` |
-| 44 | `partner of` | Formal partnership | `(Chainlink, partner of, SWIFT)` |
-| 45 | `invested in` | Financial investment | `(a16z, invested in, Uniswap)` |
-
-### Domain-Specific Knowledge (46-50)
+### Authorship and Contribution (23-28)
 
 | # | Predicate | Intent | Typical Triple Pattern |
 |---|---|---|---|
-| 46 | `uses` | Technology utilization | `(Aave, uses, Chainlink)` |
-| 47 | `compatible with` | Interoperability | `(MetaMask, compatible with, Ethereum)` |
-| 48 | `governed by` | Governance authority | `(Uniswap, governed by, UNI holders)` |
-| 49 | `priced in` | Denomination currency | `(NFT Collection, priced in, ETH)` |
-| 50 | `implements` | Standard implementation | `(USDC, implements, ERC-20)` |
+| 23 | `created by` | Origin attribution | `(Ethereum, created by, Vitalik Buterin)` |
+| 24 | `authored by` | Written content attribution | `(Whitepaper, authored by, Satoshi)` |
+| 25 | `contributed to` | Contribution record | `(I, contributed to, OpenZeppelin)` |
+| 26 | `forked from` | Divergent copy | `(Sushiswap, forked from, Uniswap)` |
+| 27 | `derived from` | Adaptation or build-upon | `(Optimism, derived from, Ethereum)` |
+| 28 | `inspired by` | Creative influence | `(Solana, inspired by, PBFT)` |
 
-### Sentiment and Opinion (51-58)
-
-| # | Predicate | Intent | Typical Triple Pattern |
-|---|---|---|---|
-| 51 | `agrees with` | Alignment of position | `(Alice, agrees with, EIP-4844)` |
-| 52 | `disagrees with` | Opposition of position | `(Alice, disagrees with, PoW Revival)` |
-| 53 | `supports` | Active backing of a cause or proposal | `(Coinbase, supports, MiCA regulation)` |
-| 54 | `opposes` | Active resistance to a cause or proposal | `(Mining Pool X, opposes, PoS transition)` |
-| 55 | `skeptical of` | Cautious doubt without full rejection | `(Alice, skeptical of, Restaking)` |
-| 56 | `bullish on` | Positive conviction about future value | `(Alice, bullish on, Ethereum)` |
-| 57 | `bearish on` | Negative conviction about future value | `(Alice, bearish on, Memecoins)` |
-| 58 | `neutral on` | Explicit non-position | `(Alice, neutral on, L2 wars)` |
-
-### Comparison and Ranking (59-66)
+### Metadata and Linking (29-36)
 
 | # | Predicate | Intent | Typical Triple Pattern |
 |---|---|---|---|
-| 59 | `better than` | Subjective superiority claim | `(Rust, better than, Solidity)` |
-| 60 | `worse than` | Subjective inferiority claim | `(PoW, worse than, PoS)` |
-| 61 | `equivalent to` | Functional parity | `(USDC, equivalent to, USDT)` |
-| 62 | `competes with` | Direct market competition | `(Uniswap, competes with, Curve)` |
-| 63 | `outperforms` | Measurable superiority | `(Solana, outperforms, Ethereum)` |
-| 64 | `supersedes` | Replacement of a predecessor | `(Uniswap v4, supersedes, Uniswap v3)` |
-| 65 | `predecessor of` | Versioning lineage | `(Uniswap v2, predecessor of, Uniswap v3)` |
-| 66 | `successor of` | Forward version link | `(Uniswap v3, successor of, Uniswap v2)` |
+| 29 | `linked account` | Platform identity linkage | `(Alice, linked account, x.com/alice)` |
+| 30 | `url` | Canonical web address | `(Ethereum, url, ethereum.org)` |
+| 31 | `imgUrl` | Image reference (legacy) | `(Ethereum, imgUrl, eth-logo.png)` |
+| 32 | `has description` | Textual description | `(Ethereum, has description, "A decentralized...")` |
+| 33 | `has source` | Authoritative reference | `(EIP-4844, has source, eips.ethereum.org/...)` |
+| 34 | `published at` | Publication venue | `(Whitepaper, published at, bitcoin.org)` |
+| 35 | `located in` | Geographic or logical location | `(Devcon, located in, Bangkok)` |
+| 36 | `available on` | Platform availability | `(USDC, available on, Ethereum)` |
 
-### Knowledge and Expertise (67-74)
-
-| # | Predicate | Intent | Typical Triple Pattern |
-|---|---|---|---|
-| 67 | `expert in` | Domain expertise claim | `(Alice, expert in, ZK proofs)` |
-| 68 | `learned from` | Knowledge attribution | `(Alice, learned from, Bob)` |
-| 69 | `teaches` | Knowledge dissemination | `(Alice, teaches, Solidity)` |
-| 70 | `studied` | Learning engagement | `(Alice, studied, cryptography)` |
-| 71 | `certified by` | Credential attestation | `(Alice, certified by, Ethereum Foundation)` |
-| 72 | `mentor of` | Mentorship relationship | `(Bob, mentor of, Alice)` |
-| 73 | `student of` | Apprenticeship relationship | `(Alice, student of, Bob)` |
-| 74 | `speaks` | Language or communication capability | `(Alice, speaks, Rust)` |
-
-### Provenance and Evidence (75-82)
+### Affiliation and Membership (37-42)
 
 | # | Predicate | Intent | Typical Triple Pattern |
 |---|---|---|---|
-| 75 | `verified by` | Third-party verification | `(Smart Contract, verified by, CertiK)` |
-| 76 | `audited by` | Security or financial audit | `(Aave v3, audited by, Trail of Bits)` |
-| 77 | `attested by` | Witness or attestation | `(Credential, attested by, Issuer)` |
-| 78 | `cited by` | Academic or reference citation | `(Bitcoin Whitepaper, cited by, Ethereum Whitepaper)` |
-| 79 | `references` | Forward citation or mention | `(Ethereum Whitepaper, references, Bitcoin Whitepaper)` |
-| 80 | `evidenced by` | Supporting proof or data | `(Claim, evidenced by, On-chain Proof)` |
-| 81 | `disputed by` | Challenge to a claim | `(Claim, disputed by, Counter-evidence)` |
-| 82 | `confirmed by` | Corroboration of a claim | `(Claim, confirmed by, Independent Source)` |
+| 37 | `member of` | Organization membership | `(I, member of, Ethereum Foundation)` |
+| 38 | `employed by` | Employment relationship | `(I, employed by, Uniswap Labs)` |
+| 39 | `founded` | Founder attribution | `(Vitalik, founded, Ethereum)` |
+| 40 | `affiliated with` | General association | `(Protocol X, affiliated with, a16z)` |
+| 41 | `partner of` | Formal partnership | `(Chainlink, partner of, SWIFT)` |
+| 42 | `invested in` | Financial investment | `(a16z, invested in, Uniswap)` |
 
-### Temporal and Lifecycle (83-88)
+### Domain-Specific Knowledge (43-47)
 
 | # | Predicate | Intent | Typical Triple Pattern |
 |---|---|---|---|
-| 83 | `preceded by` | Temporal ordering | `(Merge, preceded by, Beacon Chain launch)` |
-| 84 | `followed by` | Forward temporal link | `(Beacon Chain launch, followed by, Merge)` |
-| 85 | `enabled by` | Causal enablement | `(DeFi Summer, enabled by, Compound governance)` |
-| 86 | `triggered` | Causal initiation | `(Terra collapse, triggered, Contagion)` |
-| 87 | `deprecated by` | Formal deprecation | `(ERC-20 approve, deprecated by, ERC-20 permit)` |
-| 88 | `replaced by` | Full substitution | `(Sushiswap Chef, replaced by, MasterChefV2)` |
+| 43 | `use` | Technology utilization | `(Aave, use, Chainlink)` |
+| 44 | `compatible with` | Interoperability | `(MetaMask, compatible with, Ethereum)` |
+| 45 | `governed by` | Governance authority | `(Uniswap, governed by, UNI holders)` |
+| 46 | `priced in` | Denomination currency | `(NFT Collection, priced in, ETH)` |
+| 47 | `implement` | Standard implementation | `(USDC, implement, ERC-20)` |
 
-### Governance and Policy (89-94)
-
-| # | Predicate | Intent | Typical Triple Pattern |
-|---|---|---|---|
-| 89 | `voted for` | Governance vote in favor | `(Alice, voted for, Proposal 42)` |
-| 90 | `voted against` | Governance vote against | `(Alice, voted against, Proposal 43)` |
-| 91 | `delegated to` | Governance delegation | `(Alice, delegated to, Bob)` |
-| 92 | `proposed` | Proposal authorship | `(Alice, proposed, EIP-7702)` |
-| 93 | `regulated by` | Regulatory jurisdiction | `(USDC, regulated by, SEC)` |
-| 94 | `compliant with` | Regulatory compliance | `(Exchange X, compliant with, MiCA)` |
-
-### Economic and Market (95-100)
+### Sentiment and Opinion (48-55)
 
 | # | Predicate | Intent | Typical Triple Pattern |
 |---|---|---|---|
-| 95 | `backed by` | Collateral or backing relationship | `(DAI, backed by, ETH)` |
-| 96 | `pegged to` | Price peg relationship | `(USDC, pegged to, USD)` |
-| 97 | `listed on` | Exchange or marketplace listing | `(ETH, listed on, Coinbase)` |
-| 98 | `sponsored by` | Financial sponsorship | `(Devcon, sponsored by, Ethereum Foundation)` |
-| 99 | `rewards` | Incentive distribution | `(Aave, rewards, Liquidity Providers)` |
-| 100 | `staked in` | Staking relationship | `(Alice, staked in, Ethereum Beacon Chain)` |
+| 48 | `agree with` | Alignment of position | `(I, agree with, EIP-4844)` |
+| 49 | `disagree with` | Opposition of position | `(I, disagree with, PoW Revival)` |
+| 50 | `support` | Active backing of a cause or proposal | `(I, support, MiCA regulation)` |
+| 51 | `oppose` | Active resistance to a cause or proposal | `(I, oppose, PoS transition)` |
+| 52 | `skeptical of` | Cautious doubt without full rejection | `(I, skeptical of, Restaking)` |
+| 53 | `bullish on` | Positive conviction about future value | `(I, bullish on, Ethereum)` |
+| 54 | `bearish on` | Negative conviction about future value | `(I, bearish on, Memecoins)` |
+| 55 | `neutral on` | Explicit non-position | `(I, neutral on, L2 wars)` |
+
+### Comparison and Ranking (56-63)
+
+| # | Predicate | Intent | Typical Triple Pattern |
+|---|---|---|---|
+| 56 | `better than` | Subjective superiority claim | `(Rust, better than, Solidity)` |
+| 57 | `worse than` | Subjective inferiority claim | `(PoW, worse than, PoS)` |
+| 58 | `equivalent to` | Functional parity | `(USDC, equivalent to, USDT)` |
+| 59 | `compete with` | Direct market competition | `(Uniswap, compete with, Curve)` |
+| 60 | `outperform` | Measurable superiority | `(Solana, outperform, Ethereum)` |
+| 61 | `supersede` | Replacement of a predecessor | `(Uniswap v4, supersede, Uniswap v3)` |
+| 62 | `predecessor of` | Versioning lineage | `(Uniswap v2, predecessor of, Uniswap v3)` |
+| 63 | `successor of` | Forward version link | `(Uniswap v3, successor of, Uniswap v2)` |
+
+### Knowledge and Expertise (64-71)
+
+| # | Predicate | Intent | Typical Triple Pattern |
+|---|---|---|---|
+| 64 | `expert in` | Domain expertise claim | `(I, expert in, ZK proofs)` |
+| 65 | `learned from` | Knowledge attribution | `(I, learned from, Bob)` |
+| 66 | `teach` | Knowledge dissemination | `(I, teach, Solidity)` |
+| 67 | `studied` | Learning engagement | `(I, studied, cryptography)` |
+| 68 | `certified by` | Credential attestation | `(I, certified by, Ethereum Foundation)` |
+| 69 | `mentor of` | Mentorship relationship | `(I, mentor of, Alice)` |
+| 70 | `student of` | Apprenticeship relationship | `(I, student of, Bob)` |
+| 71 | `speak` | Language or communication capability | `(I, speak, Rust)` |
+
+### Provenance and Evidence (72-79)
+
+| # | Predicate | Intent | Typical Triple Pattern |
+|---|---|---|---|
+| 72 | `verified by` | Third-party verification | `(Smart Contract, verified by, CertiK)` |
+| 73 | `audited by` | Security or financial audit | `(Aave v3, audited by, Trail of Bits)` |
+| 74 | `attested by` | Witness or attestation | `(Credential, attested by, Issuer)` |
+| 75 | `cited by` | Academic or reference citation | `(Bitcoin Whitepaper, cited by, Ethereum Whitepaper)` |
+| 76 | `reference` | Forward citation or mention | `(Ethereum Whitepaper, reference, Bitcoin Whitepaper)` |
+| 77 | `evidenced by` | Supporting proof or data | `(Claim, evidenced by, On-chain Proof)` |
+| 78 | `disputed by` | Challenge to a claim | `(Claim, disputed by, Counter-evidence)` |
+| 79 | `confirmed by` | Corroboration of a claim | `(Claim, confirmed by, Independent Source)` |
+
+### Temporal and Lifecycle (80-85)
+
+| # | Predicate | Intent | Typical Triple Pattern |
+|---|---|---|---|
+| 80 | `preceded by` | Temporal ordering | `(Merge, preceded by, Beacon Chain launch)` |
+| 81 | `followed by` | Forward temporal link | `(Beacon Chain launch, followed by, Merge)` |
+| 82 | `enabled by` | Causal enablement | `(DeFi Summer, enabled by, Compound governance)` |
+| 83 | `triggered` | Causal initiation | `(Terra collapse, triggered, Contagion)` |
+| 84 | `deprecated by` | Formal deprecation | `(ERC-20 approve, deprecated by, ERC-20 permit)` |
+| 85 | `replaced by` | Full substitution | `(Sushiswap Chef, replaced by, MasterChefV2)` |
+
+### Governance and Policy (86-91)
+
+| # | Predicate | Intent | Typical Triple Pattern |
+|---|---|---|---|
+| 86 | `voted for` | Governance vote in favor | `(I, voted for, Proposal 42)` |
+| 87 | `voted against` | Governance vote against | `(I, voted against, Proposal 43)` |
+| 88 | `delegated to` | Governance delegation | `(I, delegated to, Bob)` |
+| 89 | `proposed` | Proposal authorship | `(Alice, proposed, EIP-7702)` |
+| 90 | `regulated by` | Regulatory jurisdiction | `(USDC, regulated by, SEC)` |
+| 91 | `compliant with` | Regulatory compliance | `(Exchange X, compliant with, MiCA)` |
+
+### Economic and Market (92-97)
+
+| # | Predicate | Intent | Typical Triple Pattern |
+|---|---|---|---|
+| 92 | `backed by` | Collateral or backing relationship | `(DAI, backed by, ETH)` |
+| 93 | `pegged to` | Price peg relationship | `(USDC, pegged to, USD)` |
+| 94 | `listed on` | Exchange or marketplace listing | `(ETH, listed on, Coinbase)` |
+| 95 | `sponsored by` | Financial sponsorship | `(Devcon, sponsored by, Ethereum Foundation)` |
+| 96 | `reward` | Incentive distribution | `(Aave, reward, Liquidity Providers)` |
+| 97 | `staked in` | Staking relationship | `(I, staked in, Ethereum Beacon Chain)` |
 
 ---
 
@@ -182,9 +181,9 @@ This table maps Schema.org Action types to Intuition predicate strings. The Acti
 
 | Schema.org Action | Intuition Predicate | Notes |
 |---|---|---|
-| `FollowAction` | `follows` | Unidirectional, active interest. Schema.org distinguishes this from SubscribeAction (passive) but that distinction belongs at the app layer. |
+| `FollowAction` | `follow` | Unidirectional, active interest. Schema.org distinguishes this from SubscribeAction (passive) but that distinction belongs at the app layer. |
 | `BefriendAction` | `connected with` | Reciprocal connection. Not in the top 50 — most on-chain graphs are directional. If needed, model as two directional triples. |
-| `SubscribeAction` | `follows` | Schema.org treats this as passive reception vs active polling. In a knowledge graph, both are "follows". Product behavior (push vs pull) is app-specific. |
+| `SubscribeAction` | `follow` | Schema.org treats this as passive reception vs active polling. In a knowledge graph, both are "follow". Product behavior (push vs pull) is app-specific. |
 | `JoinAction` | `member of` | The triple records the resulting state, not the join event. |
 | `LeaveAction` | *(none)* | Leaving is the absence of the `member of` triple or a counter-triple. Not a standalone predicate. |
 | `RegisterAction` | *(none)* | Registration is a one-time event, not a durable relationship. |
@@ -196,18 +195,18 @@ This table maps Schema.org Action types to Intuition predicate strings. The Acti
 
 | Schema.org Action | Intuition Predicate | Notes |
 |---|---|---|
-| `ReactAction` | `likes` | Lightweight positive signal. Schema.org's LikeAction is a sub-type of ReactAction. |
+| `ReactAction` | `like` | Lightweight positive signal. Schema.org's LikeAction is a sub-type of ReactAction. |
 | `ReviewAction` | `reviewed` | The triple asserts the review relationship. Review content lives in the object atom or enrichment. |
-| `EndorseAction` | `endorses` | Stronger than `likes`. Schema.org places this under AssessAction. |
+| `EndorseAction` | `endorse` | Stronger than `like`. Schema.org places this under AssessAction. |
 | `ChooseAction` | *(none)* | Selection is a transient decision, not a graph relationship. |
 | `IgnoreAction` | `blocked` | Closest durable analog. `blocked` is the on-chain record of exclusion. |
-| `DislikeAction` | `distrusts` | Negative assessment. `distrusts` is more useful in a reputation graph than a generic "dislike". |
+| `DislikeAction` | `distrust` | Negative assessment. `distrust` is more useful in a reputation graph than a generic "dislike". |
 
 ### OrganizeAction Family
 
 | Schema.org Action | Intuition Predicate | Notes |
 |---|---|---|
-| `BookmarkAction` | `contains` | Bookmarking is adding to a personal collection. Model as `(my_collection, contains, item)`. |
+| `BookmarkAction` | `contain` | Bookmarking is adding to a personal collection. Model as `(my_collection, contain, item)`. |
 | `PlanAction` | *(none)* | Planning is temporal, not a graph relationship. |
 | `AllocateAction` | *(none)* | Resource allocation is transactional. |
 | `ApplyAction` | *(none)* | Application is an event. |
@@ -241,7 +240,7 @@ This table maps Schema.org Action types to Intuition predicate strings. The Acti
 
 | Schema.org Action | Intuition Predicate | Notes |
 |---|---|---|
-| `WinAction` | `outperforms` | Durable performance superiority, not a single-event win. |
+| `WinAction` | `outperform` | Durable performance superiority, not a single-event win. |
 | `LoseAction` | `worse than` | Relative positioning in the graph. |
 | `TieAction` | `equivalent to` | Functional parity assertion. |
 
@@ -249,8 +248,8 @@ This table maps Schema.org Action types to Intuition predicate strings. The Acti
 
 | Schema.org Action | Intuition Predicate | Notes |
 |---|---|---|
-| `ReplaceAction` | `replaced by` / `supersedes` | Forward and backward version links. The triple records the resulting state. |
-| `AddAction` | `contains` | Adding to a collection maps to the existing containment predicate. |
+| `ReplaceAction` | `replaced by` / `supersede` | Forward and backward version links. The triple records the resulting state. |
+| `AddAction` | `contain` | Adding to a collection maps to the existing containment predicate. |
 | `DeleteAction` | *(none)* | Deletion is the absence of a triple, not a predicate. |
 
 ### Schema.org Property Mappings (Non-Action)
@@ -264,16 +263,16 @@ Many predicates in 51-100 map more naturally to Schema.org properties than to Ac
 | `schema:award` | `certified by` | Credential attestation maps loosely. |
 | `schema:hasCredential` | `certified by` | Direct credential link. |
 | `schema:isRelatedTo` | `related` (existing auxiliary) | Broad association when nothing more specific fits. |
-| `schema:competitor` | `competes with` | Direct market competition. |
+| `schema:competitor` | `compete with` | Direct market competition. |
 | `schema:predecessorOf` | `predecessor of` | Version lineage. |
 | `schema:successorOf` | `successor of` | Forward version link. |
-| `schema:citation` | `cited by` / `references` | Forward and backward citation links. |
+| `schema:citation` | `cited by` / `reference` | Forward and backward citation links. |
 | `schema:sponsor` | `sponsored by` | Financial sponsorship. |
 | `schema:funder` | `backed by` / `invested in` | Financial backing — `backed by` for collateral, `invested in` for equity. |
-| `schema:teaches` | `teaches` | Knowledge dissemination. |
+| `schema:teaches` | `teach` | Knowledge dissemination. |
 | `schema:learner` | `student of` | Learning relationship. |
 | `schema:legislationAppliedBy` | `regulated by` | Regulatory jurisdiction. |
-| `schema:endorsee` | `endorses` / `supports` | `endorses` for entity quality, `supports` for causes and proposals. |
+| `schema:endorsee` | `endorse` / `support` | `endorse` for entity quality, `support` for causes and proposals. |
 | `Wikidata:P1552 (has quality)` | `bullish on` / `bearish on` / `skeptical of` | Sentiment predicates have no Schema.org equivalent — they are Intuition-native social graph primitives. |
 | `Wikidata:P1269 (facet of)` | `enabled by` / `triggered` | Causal relationships are modeled as directional predicates. |
 
@@ -281,35 +280,23 @@ Many predicates in 51-100 map more naturally to Schema.org properties than to Ac
 
 ## DefinedTerm Atom Schemas
 
-Each entry below proposes the predicate as an off-chain `DefinedTerm` registry entry following the schema conventions in `intuition/data-structures/classifications/defined-term/index.md`. These are for documentation, partner registries, and optional IPFS publication — **not** for use as on-chain atom data.
+Each entry below documents the canonical predicate as a minimal Schema.org `DefinedTerm`. The predicates package uses deterministic inline `DefinedTerm` JSON for canonical atom identity and may publish richer IPFS documents as optional enrichment.
 
 ### Identity and Classification
 
-#### 1. `is`
-
-```json
-{
-  "@context": "https://schema.org/",
-  "@type": "DefinedTerm",
-  "name": "is",
-  "description": "Asserts identity, type membership, or definitional equivalence between subject and object.",
-  "sameAs": ["https://schema.org/additionalType"]
-}
-```
-
-#### 2. `has type`
+#### `has type`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
   "name": "has type",
-  "description": "Classifies the subject under a type or category atom. More specific than 'is' — use when asserting formal classification rather than loose identity.",
+  "description": "Classifies the subject under a formal taxonomy or defined-term object.",
   "sameAs": ["https://www.wikidata.org/wiki/Property:P31"]
 }
 ```
 
-#### 3. `same as`
+#### `same as`
 
 ```json
 {
@@ -321,43 +308,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 4. `alias of`
-
-```json
-{
-  "@context": "https://schema.org/",
-  "@type": "DefinedTerm",
-  "name": "alias of",
-  "description": "Marks the subject as an alternative name or identifier for the object entity. Directional: the subject is the alias, the object is the canonical form.",
-  "sameAs": ["https://schema.org/alternateName"]
-}
-```
-
-#### 5. `instance of`
-
-```json
-{
-  "@context": "https://schema.org/",
-  "@type": "DefinedTerm",
-  "name": "instance of",
-  "description": "Asserts that the subject is a concrete instance of the object class or concept.",
-  "sameAs": ["https://www.wikidata.org/wiki/Property:P31"]
-}
-```
-
-#### 6. `subclass of`
-
-```json
-{
-  "@context": "https://schema.org/",
-  "@type": "DefinedTerm",
-  "name": "subclass of",
-  "description": "Asserts that the subject is a more specific type within the object's broader category.",
-  "sameAs": ["https://www.wikidata.org/wiki/Property:P279", "https://www.w3.org/2000/01/rdf-schema#subClassOf"]
-}
-```
-
-#### 7. `has tag`
+#### `has tag`
 
 ```json
 {
@@ -369,80 +320,80 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 8. `has category`
+#### `has category`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
   "name": "has category",
-  "description": "Places the subject within a broader categorical grouping. More formal than tags — use for structured taxonomies rather than free-form labeling.",
+  "description": "Places the subject in a product-level browsable category for user-facing discovery and filtering.",
   "sameAs": ["https://schema.org/category"]
 }
 ```
 
 ### Social and Reputation
 
-#### 9. `follows`
+#### `follow`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "follows",
+  "name": "follow",
   "description": "The subject chooses to subscribe to or track updates from the object entity. Unidirectional and non-reciprocal.",
   "sameAs": ["https://schema.org/FollowAction"]
 }
 ```
 
-#### 10. `likes`
+#### `like`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "likes",
+  "name": "like",
   "description": "Expresses lightweight positive endorsement of the object by the subject.",
   "sameAs": ["https://schema.org/LikeAction"]
 }
 ```
 
-#### 11. `endorses`
+#### `endorse`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "endorses",
+  "name": "endorse",
   "description": "A stronger-than-like signal indicating the subject publicly supports or vouches for the object's quality or legitimacy.",
   "sameAs": ["https://schema.org/EndorseAction"]
 }
 ```
 
-#### 12. `trusts`
+#### `trust`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "trusts",
+  "name": "trust",
   "description": "The subject asserts positive trust in the object. A first-class reputation primitive for web-of-trust graphs."
 }
 ```
 
-#### 13. `distrusts`
+#### `distrust`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "distrusts",
-  "description": "The subject asserts negative trust in the object. The inverse of 'trusts' — enables negative reputation signals.",
+  "name": "distrust",
+  "description": "The subject asserts negative trust in the object. The inverse of 'trust' — enables negative reputation signals.",
   "sameAs": ["https://schema.org/DislikeAction"]
 }
 ```
 
-#### 14. `reviewed`
+#### `reviewed`
 
 ```json
 {
@@ -454,18 +405,18 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 15. `recommended`
+#### `recommend`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "recommended",
-  "description": "The subject actively recommends the object to others in the ecosystem. Stronger than 'likes', weaker than 'endorses'."
+  "name": "recommend",
+  "description": "The subject actively recommends the object to others in the ecosystem. Stronger than 'like', weaker than 'endorse'."
 }
 ```
 
-#### 16. `reported`
+#### `reported`
 
 ```json
 {
@@ -476,7 +427,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 17. `blocked`
+#### `blocked`
 
 ```json
 {
@@ -488,32 +439,44 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 18. `vouches for`
+#### `vouch for`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "vouches for",
+  "name": "vouch for",
   "description": "The subject stakes personal credibility on the object's identity, quality, or claims. A reputation primitive stronger than endorsement."
 }
 ```
 
 ### Curation and Containment
 
-#### 19. `contains`
+#### `contain`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "contains",
+  "name": "contain",
   "description": "The subject collection or container includes the object as a member or entry.",
   "sameAs": ["https://schema.org/hasPart"]
 }
 ```
 
-#### 20. `curated by`
+#### `listed in`
+
+```json
+{
+  "@context": "https://schema.org/",
+  "@type": "DefinedTerm",
+  "name": "listed in",
+  "description": "The subject item appears as an entry within the object collection, stack, or curated list.",
+  "sameAs": ["https://schema.org/isPartOf"]
+}
+```
+
+#### `curated by`
 
 ```json
 {
@@ -525,7 +488,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 21. `pinned in`
+#### `pinned in`
 
 ```json
 {
@@ -536,7 +499,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 22. `featured in`
+#### `featured in`
 
 ```json
 {
@@ -548,7 +511,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 23. `ranked above`
+#### `ranked above`
 
 ```json
 {
@@ -559,19 +522,19 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 24. `depends on`
+#### `depend on`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "depends on",
+  "name": "depend on",
   "description": "The subject requires or relies on the object to function or exist.",
   "sameAs": ["https://schema.org/requirements"]
 }
 ```
 
-#### 25. `alternative to`
+#### `alternative to`
 
 ```json
 {
@@ -585,7 +548,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 
 ### Authorship and Contribution
 
-#### 26. `created by`
+#### `created by`
 
 ```json
 {
@@ -597,7 +560,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 27. `authored by`
+#### `authored by`
 
 ```json
 {
@@ -609,7 +572,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 28. `contributed to`
+#### `contributed to`
 
 ```json
 {
@@ -621,7 +584,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 29. `forked from`
+#### `forked from`
 
 ```json
 {
@@ -632,7 +595,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 30. `derived from`
+#### `derived from`
 
 ```json
 {
@@ -644,7 +607,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 31. `inspired by`
+#### `inspired by`
 
 ```json
 {
@@ -657,7 +620,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 
 ### Metadata and Linking
 
-#### 32. `linked account`
+#### `linked account`
 
 ```json
 {
@@ -669,7 +632,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 33. `url`
+#### `url`
 
 ```json
 {
@@ -681,7 +644,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 34. `imgUrl`
+#### `imgUrl`
 
 ```json
 {
@@ -693,7 +656,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 35. `has description`
+#### `has description`
 
 ```json
 {
@@ -705,7 +668,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 36. `has source`
+#### `has source`
 
 ```json
 {
@@ -717,7 +680,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 37. `published at`
+#### `published at`
 
 ```json
 {
@@ -729,7 +692,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 38. `located in`
+#### `located in`
 
 ```json
 {
@@ -741,7 +704,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 39. `available on`
+#### `available on`
 
 ```json
 {
@@ -755,7 +718,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 
 ### Affiliation and Membership
 
-#### 40. `member of`
+#### `member of`
 
 ```json
 {
@@ -767,7 +730,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 41. `employed by`
+#### `employed by`
 
 ```json
 {
@@ -779,7 +742,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 42. `founded`
+#### `founded`
 
 ```json
 {
@@ -791,7 +754,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 43. `affiliated with`
+#### `affiliated with`
 
 ```json
 {
@@ -803,7 +766,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 44. `partner of`
+#### `partner of`
 
 ```json
 {
@@ -815,7 +778,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 45. `invested in`
+#### `invested in`
 
 ```json
 {
@@ -829,19 +792,19 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 
 ### Domain-Specific Knowledge
 
-#### 46. `uses`
+#### `use`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "uses",
+  "name": "use",
   "description": "The subject utilizes, integrates, or depends on the object tool, technology, or resource.",
   "sameAs": ["https://schema.org/usesDevice"]
 }
 ```
 
-#### 47. `compatible with`
+#### `compatible with`
 
 ```json
 {
@@ -853,7 +816,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 48. `governed by`
+#### `governed by`
 
 ```json
 {
@@ -864,7 +827,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 49. `priced in`
+#### `priced in`
 
 ```json
 {
@@ -876,77 +839,77 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 50. `implements`
+#### `implement`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "implements",
+  "name": "implement",
   "description": "The subject contract, application, or system implements the object standard, specification, or interface."
 }
 ```
 
 ### Sentiment and Opinion
 
-#### 51. `agrees with`
+#### `agree with`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "agrees with",
+  "name": "agree with",
   "description": "The subject's position aligns with the object claim, proposal, or stance.",
   "sameAs": ["https://schema.org/AgreeAction"]
 }
 ```
 
-#### 52. `disagrees with`
+#### `disagree with`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "disagrees with",
+  "name": "disagree with",
   "description": "The subject's position opposes the object claim, proposal, or stance.",
   "sameAs": ["https://schema.org/DisagreeAction"]
 }
 ```
 
-#### 53. `supports`
+#### `support`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "supports",
-  "description": "The subject actively backs the object cause, proposal, or initiative. Broader than 'endorses' — applies to movements and policies, not just entities."
+  "name": "support",
+  "description": "The subject actively backs the object cause, proposal, or initiative. Broader than 'endorse' — applies to movements and policies, not just entities."
 }
 ```
 
-#### 54. `opposes`
+#### `oppose`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "opposes",
-  "description": "The subject actively resists or campaigns against the object cause, proposal, or initiative. The inverse of 'supports'."
+  "name": "oppose",
+  "description": "The subject actively resists or campaigns against the object cause, proposal, or initiative. The inverse of 'support'."
 }
 ```
 
-#### 55. `skeptical of`
+#### `skeptical of`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
   "name": "skeptical of",
-  "description": "The subject expresses cautious doubt about the object without fully rejecting it. Weaker than 'distrusts' or 'opposes'."
+  "description": "The subject expresses cautious doubt about the object without fully rejecting it. Weaker than 'distrust' or 'oppose'."
 }
 ```
 
-#### 56. `bullish on`
+#### `bullish on`
 
 ```json
 {
@@ -957,7 +920,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 57. `bearish on`
+#### `bearish on`
 
 ```json
 {
@@ -968,7 +931,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 58. `neutral on`
+#### `neutral on`
 
 ```json
 {
@@ -981,7 +944,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 
 ### Comparison and Ranking
 
-#### 59. `better than`
+#### `better than`
 
 ```json
 {
@@ -993,7 +956,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 60. `worse than`
+#### `worse than`
 
 ```json
 {
@@ -1004,7 +967,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 61. `equivalent to`
+#### `equivalent to`
 
 ```json
 {
@@ -1016,42 +979,42 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 62. `competes with`
+#### `compete with`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "competes with",
+  "name": "compete with",
   "description": "The subject and object are direct competitors in the same market or category.",
   "sameAs": ["https://schema.org/competitor"]
 }
 ```
 
-#### 63. `outperforms`
+#### `outperform`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "outperforms",
+  "name": "outperform",
   "description": "The subject demonstrably exceeds the object on measurable criteria. Stronger than 'better than' — implies evidence."
 }
 ```
 
-#### 64. `supersedes`
+#### `supersede`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "supersedes",
+  "name": "supersede",
   "description": "The subject is the designated replacement for the object. Implies the object is deprecated or obsolete.",
   "sameAs": ["https://schema.org/supersededBy"]
 }
 ```
 
-#### 65. `predecessor of`
+#### `predecessor of`
 
 ```json
 {
@@ -1063,7 +1026,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 66. `successor of`
+#### `successor of`
 
 ```json
 {
@@ -1077,7 +1040,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 
 ### Knowledge and Expertise
 
-#### 67. `expert in`
+#### `expert in`
 
 ```json
 {
@@ -1089,7 +1052,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 68. `learned from`
+#### `learned from`
 
 ```json
 {
@@ -1100,19 +1063,19 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 69. `teaches`
+#### `teach`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "teaches",
+  "name": "teach",
   "description": "The subject actively disseminates knowledge about the object topic or skill.",
   "sameAs": ["https://schema.org/teaches"]
 }
 ```
 
-#### 70. `studied`
+#### `studied`
 
 ```json
 {
@@ -1124,7 +1087,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 71. `certified by`
+#### `certified by`
 
 ```json
 {
@@ -1136,7 +1099,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 72. `mentor of`
+#### `mentor of`
 
 ```json
 {
@@ -1147,7 +1110,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 73. `student of`
+#### `student of`
 
 ```json
 {
@@ -1158,13 +1121,13 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 74. `speaks`
+#### `speak`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "speaks",
+  "name": "speak",
   "description": "The subject has proficiency in the object language, programming language, or communication system.",
   "sameAs": ["https://schema.org/knowsLanguage"]
 }
@@ -1172,7 +1135,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 
 ### Provenance and Evidence
 
-#### 75. `verified by`
+#### `verified by`
 
 ```json
 {
@@ -1183,7 +1146,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 76. `audited by`
+#### `audited by`
 
 ```json
 {
@@ -1194,7 +1157,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 77. `attested by`
+#### `attested by`
 
 ```json
 {
@@ -1205,7 +1168,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 78. `cited by`
+#### `cited by`
 
 ```json
 {
@@ -1217,19 +1180,19 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 79. `references`
+#### `reference`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "references",
+  "name": "reference",
   "description": "The subject work cites or refers to the object work. A forward citation link — the inverse of 'cited by'.",
   "sameAs": ["https://schema.org/citation"]
 }
 ```
 
-#### 80. `evidenced by`
+#### `evidenced by`
 
 ```json
 {
@@ -1240,7 +1203,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 81. `disputed by`
+#### `disputed by`
 
 ```json
 {
@@ -1251,7 +1214,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 82. `confirmed by`
+#### `confirmed by`
 
 ```json
 {
@@ -1264,7 +1227,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 
 ### Temporal and Lifecycle
 
-#### 83. `preceded by`
+#### `preceded by`
 
 ```json
 {
@@ -1275,7 +1238,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 84. `followed by`
+#### `followed by`
 
 ```json
 {
@@ -1286,7 +1249,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 85. `enabled by`
+#### `enabled by`
 
 ```json
 {
@@ -1297,7 +1260,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 86. `triggered`
+#### `triggered`
 
 ```json
 {
@@ -1308,7 +1271,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 87. `deprecated by`
+#### `deprecated by`
 
 ```json
 {
@@ -1319,7 +1282,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 88. `replaced by`
+#### `replaced by`
 
 ```json
 {
@@ -1333,7 +1296,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 
 ### Governance and Policy
 
-#### 89. `voted for`
+#### `voted for`
 
 ```json
 {
@@ -1345,7 +1308,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 90. `voted against`
+#### `voted against`
 
 ```json
 {
@@ -1357,7 +1320,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 91. `delegated to`
+#### `delegated to`
 
 ```json
 {
@@ -1368,7 +1331,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 92. `proposed`
+#### `proposed`
 
 ```json
 {
@@ -1379,7 +1342,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 93. `regulated by`
+#### `regulated by`
 
 ```json
 {
@@ -1391,7 +1354,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 94. `compliant with`
+#### `compliant with`
 
 ```json
 {
@@ -1404,7 +1367,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 
 ### Economic and Market
 
-#### 95. `backed by`
+#### `backed by`
 
 ```json
 {
@@ -1416,7 +1379,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 96. `pegged to`
+#### `pegged to`
 
 ```json
 {
@@ -1427,7 +1390,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 97. `listed on`
+#### `listed on`
 
 ```json
 {
@@ -1438,7 +1401,7 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 98. `sponsored by`
+#### `sponsored by`
 
 ```json
 {
@@ -1450,18 +1413,18 @@ Each entry below proposes the predicate as an off-chain `DefinedTerm` registry e
 }
 ```
 
-#### 99. `rewards`
+#### `reward`
 
 ```json
 {
   "@context": "https://schema.org/",
   "@type": "DefinedTerm",
-  "name": "rewards",
+  "name": "reward",
   "description": "The subject protocol or program distributes incentives to the object participant class or actor."
 }
 ```
 
-#### 100. `staked in`
+#### `staked in`
 
 ```json
 {
@@ -1478,11 +1441,11 @@ The protocol hashes atom data into a deterministic ID via `keccak256(ATOM_SALT, 
 
 ### Option A: Plain String
 
-The predicate atom data is a raw UTF-8 string like `"follows"`.
+The predicate atom data is a raw UTF-8 string like `"follow"`.
 
 ```
-atom data:  "follows"
-atom ID:    keccak256(ATOM_SALT, keccak256(toHex("follows")))
+atom data:  "follow"
+atom ID:    keccak256(ATOM_SALT, keccak256(toHex("follow")))
 ```
 
 | | |
@@ -1499,13 +1462,13 @@ atom ID:    keccak256(ATOM_SALT, keccak256(toHex("follows")))
 The predicate atom data is a JSON document stored directly as the atom bytes.
 
 ```
-atom data:  '{"@context":"https://schema.org/","@type":"DefinedTerm","name":"follows","description":"..."}'
+atom data:  '{"@context":"https://schema.org/","@type":"DefinedTerm","name":"follow","description":"..."}'
 atom ID:    keccak256(ATOM_SALT, keccak256(toHex(json_string)))
 ```
 
 | | |
 |---|---|
-| Determinism | **Fragile.** Key order, whitespace, and Unicode normalization all change the hash. `{"name":"follows","@type":"DefinedTerm"}` and `{"@type":"DefinedTerm","name":"follows"}` produce different atom IDs forever. Requires strict canonical JSON serialization. |
+| Determinism | **Fragile unless canonicalized.** Key order, whitespace, and Unicode normalization all change the hash. `{"name":"follow","@type":"DefinedTerm"}` and `{"@type":"DefinedTerm","name":"follow"}` produce different atom IDs forever unless the SDK uses strict canonical JSON serialization. |
 | Gas cost | 5-10x more bytes than a plain string. |
 | External dependencies | None at read time, but requires a serialization spec at write time. |
 | Self-describing | Yes — carries its own semantic context in the triple. |
@@ -1517,15 +1480,15 @@ atom ID:    keccak256(ATOM_SALT, keccak256(toHex(json_string)))
 Use the full Schema.org Action hierarchy (e.g., `FollowAction`, `EndorseAction`, `BookmarkAction`) as predicate atoms.
 
 ```
-atom data:  '{"@context":"https://schema.org/","@type":"FollowAction","name":"follows"}'
+atom data:  '{"@context":"https://schema.org/","@type":"FollowAction","name":"follow"}'
 ```
 
 | | |
 |---|---|
 | Semantic precision | High. Schema.org distinguishes FollowAction (active polling) from SubscribeAction (passive reception) from BefriendAction (reciprocal). |
-| Protocol fit | **Poor.** Actions are temporal events with `agent`, `startTime`, `endTime`, `actionStatus`. Predicates are durable relationships. A triple `(Alice, follows, Bob)` is a standing fact — not a timestamped event. |
-| Graph fragmentation | If some builders use `FollowAction` and others use `"follows"`, the graph splits. Two predicate atoms, two sets of triples, no interop. |
-| Nuance value | The distinctions Schema.org draws (follow vs subscribe vs befriend) are real, but they matter at the **application layer**, not the **triple layer**. Whether "follows" means push notifications or active polling is a product decision, not a predicate identity question. |
+| Protocol fit | **Poor.** Actions are temporal events with `agent`, `startTime`, `endTime`, `actionStatus`. Predicates are durable relationships. A triple `(Alice, follow, Bob)` is a standing fact — not a timestamped event. |
+| Graph fragmentation | If some builders use `FollowAction` and others use canonical `DefinedTerm` predicate atom data, the graph splits. Two predicate atoms, two sets of triples, no interop. |
+| Nuance value | The distinctions Schema.org draws (follow vs subscribe vs befriend) are real, but they matter at the **application layer**, not the **triple layer**. Whether "follow" means push notifications or active polling is a product decision, not a predicate identity question. |
 
 ### Option D: IPFS-Hosted Document
 
@@ -1543,18 +1506,18 @@ atom ID:    keccak256(ATOM_SALT, keccak256(toHex("ipfs://QmXyz...")))
 | Determinism | The CID is content-addressed, so the same document always produces the same CID. But the atom ID is derived from the CID string, not the document itself — one layer of indirection. |
 | Availability | **Requires IPFS infrastructure.** If pinning lapses and no gateway has the content, the predicate becomes opaque bytes. Builders can't resolve the meaning without the document. |
 | Lookup cost | Every predicate resolution requires an IPFS fetch. Plain strings are self-evident. |
-| Hybrid potential | Could work as an optional enrichment layer — the canonical atom is a plain string, and a separate triple like `(follows_atom, has source, ipfs://QmXyz...)` links it to rich metadata. |
+| Hybrid potential | Works as an optional enrichment layer — the canonical atom can be deterministic inline `DefinedTerm` JSON, and a separate triple like `(follow_atom, has source, ipfs://QmXyz...)` links it to richer metadata. |
 
 ### Recommendation
 
-**Use plain strings as the on-chain predicate atom data.** Publish structured metadata (DefinedTerm schemas, Schema.org Action mappings) as an off-chain registry — in this repo, in SDK docs, and optionally on IPFS for decentralized access.
+**Use deterministic inline `DefinedTerm` JSON as the canonical predicate atom data.** Publish richer structured metadata (Schema.org mappings, usage examples, i18n, and semantic flags) as optional IPFS enrichment or generated SDK metadata without changing the canonical atom identity.
 
 This gives you:
-- Deterministic, gas-cheap, dependency-free atom IDs
-- The same interoperability guarantees as JSON-LD (because the registry maps strings to structured definitions)
-- No graph fragmentation risk from serialization differences
-- Freedom to enrich predicate metadata without changing on-chain identity
+- Self-describing predicate atoms that match the rest of the typed atom model
+- Deterministic atom IDs when the SDK emits canonical JSON bytes
+- No graph fragmentation risk from ad hoc plain strings or Schema.org Action variants
+- Freedom to enrich predicate metadata without changing canonical atom identity
 
-The DefinedTerm schemas in this document serve as the registry layer. The plain string list is the source of truth for on-chain atom creation.
+The generated predicates package remains the source of truth for canonical atom creation; this document explains the semantics and partner-facing modeling guidance.
 
 ---

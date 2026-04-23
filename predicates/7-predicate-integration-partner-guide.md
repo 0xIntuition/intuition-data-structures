@@ -9,7 +9,7 @@ For the full predicate catalog and market design theory, see `predicate-analysis
 ## Key Concepts in 60 Seconds
 
 1. **Triples** are `(Subject, Predicate, Object)` — three atoms that form a knowledge claim.
-2. **Predicates** are the relationship between subject and object. They are plain strings stored on-chain.
+2. **Predicates** are the relationship between subject and object. Enshrined predicates are canonical atom IDs derived from deterministic `DefinedTerm` atom data.
 3. **Enshrined predicates** are the canonical predicates supported by the Intuition ecosystem (SDK, indexer, API, frontends).
 4. **The `I` atom** is a singleton atom with data `"I"`. It is the universal subject for first-person claims. When Alice deposits on `(I, follow, Vitalik)`, she is saying "I follow Vitalik."
 5. **Vaults** are created per triple. Deposits express conviction. TVL is the signal.
@@ -69,29 +69,28 @@ Is the depositor making a claim about themselves?
 
 ```typescript
 import {
-  I_SUBJECT,
-  FOLLOW,
-  LIKE,
-  TRUST,
-  DISTRUST,
-  ENDORSE,
-  RECOMMEND,
-  CONTAIN,
-  CURATED_BY,
-  IS,
-  HAS_TAG,
-  HAS_TYPE,
-  HAS_DESCRIPTION,
-  CREATED_BY,
-  SAME_AS,
-  BETTER_THAN,
-  ALTERNATIVE_TO,
-  AGREE_WITH,
-  DISAGREE_WITH,
-  BULLISH_ON,
-  BEARISH_ON,
+  I_SUBJECT_ID,
+  FOLLOW_ID,
+  LIKE_ID,
+  TRUST_ID,
+  DISTRUST_ID,
+  ENDORSE_ID,
+  RECOMMEND_ID,
+  CONTAIN_ID,
+  CURATED_BY_ID,
+  HAS_TAG_ID,
+  HAS_TYPE_ID,
+  HAS_DESCRIPTION_ID,
+  CREATED_BY_ID,
+  SAME_AS_ID,
+  BETTER_THAN_ID,
+  ALTERNATIVE_TO_ID,
+  AGREE_WITH_ID,
+  DISAGREE_WITH_ID,
+  BULLISH_ON_ID,
+  BEARISH_ON_ID,
   // ... see full list in enshrined-predicates-launch-set.md
-} from '@intuition/predicates';
+} from '@0xintuition/predicates';
 ```
 
 ### Creating a Triple
@@ -99,8 +98,8 @@ import {
 ```typescript
 // Depositional: User follows Vitalik
 await createTriple({
-  subject: I_SUBJECT,       // "I"
-  predicate: FOLLOW,         // "follow"
+  subject: I_SUBJECT_ID,     // atom ID for "I"
+  predicate: FOLLOW_ID,      // atom ID for the "follow" DefinedTerm predicate
   object: vitalikAtomId,
   deposit: parseEther('0.1'),
 });
@@ -108,7 +107,7 @@ await createTriple({
 // Attributive: Factual claim about Ethereum
 await createTriple({
   subject: ethereumAtomId,
-  predicate: CREATED_BY,     // "created by"
+  predicate: CREATED_BY_ID,  // atom ID for the "created by" predicate
   object: vitalikAtomId,
   deposit: parseEther('0.01'),
 });
@@ -116,7 +115,7 @@ await createTriple({
 // Collection curation: adding an item to a collection
 await createTriple({
   subject: defiBlueChipsAtomId,
-  predicate: CONTAIN,        // "contain"
+  predicate: CONTAIN_ID,     // atom ID for the "contain" predicate
   object: aaveAtomId,
   deposit: parseEther('0.01'),
 });
@@ -124,7 +123,7 @@ await createTriple({
 // Comparative: Head-to-head opinion
 await createTriple({
   subject: rustAtomId,
-  predicate: BETTER_THAN,    // "better than"
+  predicate: BETTER_THAN_ID, // atom ID for the "better than" predicate
   object: solidityAtomId,
   deposit: parseEther('0.05'),
 });
@@ -132,21 +131,21 @@ await createTriple({
 
 ### Displaying Predicates
 
-Never show the raw predicate string to users. Use the SDK rendering function:
+Never show raw predicate atom data or IDs to users. Use the SDK rendering helpers:
 
 ```typescript
-import { renderPredicate } from '@intuition/predicate-i18n';
+import { renderLocalizedPredicate } from '@0xintuition/predicates';
 
 // "I follow Vitalik"
-renderPredicate('follow', { locale: 'en', subjectContext: 'first-person' });
+renderLocalizedPredicate('follow', { subjectContext: 'first-person' });
 // → "follow"
 
 // "Alice follows Vitalik"
-renderPredicate('follow', { locale: 'en', subjectContext: 'singular' });
+renderLocalizedPredicate('follow', { subjectContext: 'singular' });
 // → "follows"
 
 // Button label
-renderPredicate('follow', { locale: 'en', subjectContext: 'first-person', form: 'displayName' });
+renderLocalizedPredicate('follow', { subjectContext: 'first-person', form: 'displayName' });
 // → "Follow"
 ```
 
@@ -244,8 +243,8 @@ Returns all triples where the entity appears as subject or object.
 ### 1. Fragmenting the market
 
 ```
-BAD:   createTriple({ subject: aliceAtomId, predicate: FOLLOW, object: vitalikAtomId })
-GOOD:  createTriple({ subject: I_SUBJECT,   predicate: FOLLOW, object: vitalikAtomId })
+BAD:   createTriple({ subject: aliceAtomId, predicate: FOLLOW_ID, object: vitalikAtomId })
+GOOD:  createTriple({ subject: I_SUBJECT_ID, predicate: FOLLOW_ID, object: vitalikAtomId })
 ```
 
 If the user is following Vitalik, use `I`. Alice's identity is captured by her deposit address.
@@ -253,9 +252,9 @@ If the user is following Vitalik, use `I`. Alice's identity is captured by her d
 ### 2. Using UI concepts as predicates
 
 ```
-BAD:   createTriple({ subject: I_SUBJECT, predicate: 'bookmark', object: uniswapAtomId })
-BAD:   createTriple({ subject: I_SUBJECT, predicate: 'star',     object: uniswapAtomId })
-GOOD:  createTriple({ subject: I_SUBJECT, predicate: LIKE,       object: uniswapAtomId })
+BAD:   createTriple({ subject: I_SUBJECT_ID, predicate: 'bookmark', object: uniswapAtomId })
+BAD:   createTriple({ subject: I_SUBJECT_ID, predicate: 'star', object: uniswapAtomId })
+GOOD:  createTriple({ subject: I_SUBJECT_ID, predicate: LIKE_ID, object: uniswapAtomId })
 ```
 
 "Bookmark," "star," and "favorite" are UI concepts. They all mean `like` at the semantic level. Your app can render it as a bookmark icon — that's a frontend choice, not a predicate choice.
@@ -264,10 +263,10 @@ GOOD:  createTriple({ subject: I_SUBJECT, predicate: LIKE,       object: uniswap
 
 ```
 BAD:   createTriple({ predicate: 'follows' })   // old third-person form
-GOOD:  createTriple({ predicate: FOLLOW })        // "follow" — base form
+GOOD:  createTriple({ predicate: FOLLOW_ID })    // canonical atom ID for "follow"
 ```
 
-`"follows"` and `"follow"` are different atom IDs. Always use the SDK constants. See `predicate-migration-guide.md`.
+`"follows"` and the canonical `follow` DefinedTerm atom data produce different atom IDs. Always use the SDK constants. See `predicate-migration-guide.md`.
 
 ### 4. Creating custom predicates for covered concepts
 

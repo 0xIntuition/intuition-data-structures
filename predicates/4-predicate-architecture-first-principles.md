@@ -2,6 +2,8 @@
 
 This document works from first principles to determine the right architecture for enshrined predicates. It is deliberately not anchored to any prior recommendation. It follows the evidence.
 
+Current implementation note: the predicates package now implements the Approach C outcome from this analysis: canonical predicate atoms use deterministic inline `DefinedTerm` JSON, and the SDK exports precomputed atom IDs such as `FOLLOW_ID`.
+
 ---
 
 ## The Actual Problem
@@ -62,7 +64,7 @@ The question isn't just "string vs IPFS." It's: **should predicates be classifie
 
 ## Four Concrete Approaches
 
-### Approach A: Plain Strings (Current)
+### Approach A: Plain Strings (Legacy Baseline)
 
 Predicate atom data is a raw UTF-8 string.
 
@@ -91,7 +93,7 @@ Interpretation: OK, so 0x123 is a Person named Vitalik, 0x789 is an Organization
 ```
 1. npm install @intuition/sdk
 2. Read SDK docs to learn that "follow" is a predicate
-3. Import FOLLOW constant
+3. Import FOLLOW_ID constant
 4. Use it
 5. Works — but only because the SDK told them what "follow" means
 ```
@@ -99,7 +101,7 @@ Interpretation: OK, so 0x123 is a Person named Vitalik, 0x789 is an Organization
 **What breaks at scale:**
 
 ```
-Partner A reads the SDK, uses FOLLOW constant → atom ID 0x456
+Partner A reads the SDK, uses FOLLOW_ID constant → atom ID 0x456
 Partner B doesn't use the SDK, creates an atom with "Follow" → atom ID 0x999
 Partner C creates an atom with "follow " (trailing space) → atom ID 0xaaa
 
@@ -361,11 +363,11 @@ What does a developer actually do every day?
 
 ```typescript
 // They import a constant and use it. This is the same for ALL approaches.
-import { FOLLOW } from '@intuition/predicates';
-await createTriple({ subject: I_SUBJECT, predicate: FOLLOW, object: vitalikId });
+import { FOLLOW_ID, I_SUBJECT_ID } from '@0xintuition/predicates';
+await createTriple({ subject: I_SUBJECT_ID, predicate: FOLLOW_ID, object: vitalikId });
 ```
 
-The atom data format is invisible to the daily developer. The SDK abstracts it. Whether `FOLLOW` resolves to `"follow"` or `{"@type":"DefinedTerm","name":"follow",...}` doesn't change the import/use pattern.
+The atom data format is invisible to the daily developer. The SDK abstracts it. Whether `FOLLOW_ID` resolves from `"follow"` or `{"@type":"DefinedTerm","name":"follow",...}` doesn't change the import/use pattern.
 
 **Winner: Tie.** All approaches have the same SDK surface.
 
@@ -676,17 +678,17 @@ For 25 launch predicates, this produces 25 DefinedTerm atoms on-chain.
 ### Daily SDK Usage (Unchanged)
 
 ```typescript
-import { FOLLOW, LIKE, TRUST, I_SUBJECT } from '@intuition/predicates';
+import { FOLLOW_ID, LIKE_ID, TRUST_ID, I_SUBJECT_ID } from '@0xintuition/predicates';
 
 // Same as before — developer doesn't care about atom internals
 await createTriple({
-  subject: I_SUBJECT,
-  predicate: FOLLOW,
+  subject: I_SUBJECT_ID,
+  predicate: FOLLOW_ID,
   object: vitalikAtomId
 });
 ```
 
-The SDK exports pre-computed atom IDs. The fact that `FOLLOW` resolves to a DefinedTerm atom ID instead of a plain string atom ID is invisible.
+The SDK exports pre-computed atom IDs. The fact that `FOLLOW_ID` resolves to a DefinedTerm atom ID instead of a plain string atom ID is invisible.
 
 ### Cold-Start Developer (Exploring Chain Data)
 
@@ -738,7 +740,7 @@ User's locale: French
 User action: clicks "Suivre" button on Vitalik's profile
 
 Frontend flow:
-  1. Resolve "follow" predicate → FOLLOW atom ID
+  1. Resolve "follow" predicate → FOLLOW_ID atom ID
   2. Market pattern = depositional → use I_SUBJECT
   3. Find or create (I, follow, Vitalik) triple
   4. User deposits
@@ -788,7 +790,7 @@ If we go with Approach C, the migration from current state is:
 |---|---|---|
 | Atom data: `"follows"` | Atom data: `{"@type":"DefinedTerm","name":"follow",...}` | New atom ID (double migration: base form + DefinedTerm) |
 | No on-chain registry | Registry triples | New triples |
-| SDK: `FOLLOWS_PREDICATE = "follows"` | SDK: `FOLLOW = calculateAtomId(definedTermJson)` | SDK constant change |
+| SDK: `FOLLOWS_PREDICATE = "follows"` | SDK: `FOLLOW_ID = calculateAtomId(definedTermJson)` | SDK constant change |
 | Interpretation: docs only | Interpretation: atom data + 2 triples + off-chain | New architecture |
 
 This is a larger migration than Approach A or B. But it's a one-time cost at launch. And combining the base-form migration with the DefinedTerm migration is cleaner than doing them separately.

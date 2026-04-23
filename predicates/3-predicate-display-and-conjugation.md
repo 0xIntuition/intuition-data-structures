@@ -163,7 +163,7 @@ The `conjugates` and `thirdPerson` fields are display metadata. They are never s
 The rendering function takes a predicate's `name` (extracted from the DefinedTerm atom data or from the SDK predicate definitions) and the subject context, and returns the display form:
 
 ```typescript
-import { PREDICATE_DEFS } from '@intuition/predicates';
+import { PREDICATE_DEFS } from '@0xintuition/predicates';
 
 type SubjectContext = 'first-person' | 'singular' | 'plural';
 
@@ -215,8 +215,6 @@ const displayForm = renderPredicate(predicateName, subjectContext);
 When the predicate has an IPFS enrichment document (linked via a `has source` triple or used directly as the atom data in the IPFS URI strategy), the enrichment contains conjugation and localization data for multiple languages:
 
 ```typescript
-import { resolvePredicateEnrichment } from '@intuition/predicate-i18n';
-
 /**
  * Renders a predicate for a specific locale and subject context.
  * Resolves the IPFS enrichment document for i18n labels.
@@ -227,7 +225,7 @@ async function renderPredicateLocalized(
   locale: string,
   subjectContext: SubjectContext
 ): Promise<string> {
-  // Try to resolve i18n from IPFS enrichment
+  // App-specific helper that resolves i18n from IPFS enrichment
   const enrichment = await resolvePredicateEnrichment(predicateName);
 
   if (enrichment?.i18n?.[locale]) {
@@ -314,9 +312,8 @@ These predicates are multi-word phrases, adjective-based, or passive constructio
 
 | Predicate | Why it doesn't conjugate |
 |---|---|
-| `is` | Already works as both base and third-person |
 | `has type`, `has tag`, `has category`, `has description`, `has source` | Fixed compound labels (see `has` anomaly below) |
-| `same as`, `alias of`, `instance of`, `subclass of`, `member of` | Noun/adjective phrases |
+| `same as`, `listed in`, `member of`, `student of`, `mentor of` | Noun/adjective phrases |
 | `employed by`, `affiliated with`, `created by`, `authored by` | Past participle — doesn't change |
 | `audited by`, `verified by`, `certified by`, `governed by`, `regulated by` | Past participle |
 | `backed by`, `pegged to`, `listed on`, `available on` | Past participle / adjective phrase |
@@ -326,7 +323,7 @@ These predicates are multi-word phrases, adjective-based, or passive constructio
 | `expert in`, `linked account`, `predecessor of`, `successor of` | Noun phrase |
 | `student of`, `mentor of`, `partner of` | Noun phrase |
 
-The majority of predicates do not conjugate at all. The conjugation problem only affects active-voice single verbs — roughly 22 out of 100 cataloged predicates.
+The majority of predicates do not conjugate at all. The conjugation problem only affects active-voice single verbs — roughly 22 out of 97 cataloged predicates.
 
 ---
 
